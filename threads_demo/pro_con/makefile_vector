@@ -1,0 +1,2 @@
+main_vector:pro_con_vector.cpp
+	g++ -o main_vector  pro_con_vector.cpp -pthread

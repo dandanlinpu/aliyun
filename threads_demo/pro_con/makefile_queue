@@ -1,0 +1,2 @@
+main_queue:pro_con_queue.cpp
+	g++ -o main_queue pro_con_queue.cpp -pthread

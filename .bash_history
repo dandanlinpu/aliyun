@@ -1,302 +1,3 @@
-get-pip.py
-python get-pip.py
-python3 get-pip.py
-python setup.py install
-ls
-vim master 
-ll
-cd requests/
-ls
-python3 setup.py 
-python3 setup.py  install
-./setup.py 
-./setup.py install
-sudo ./setup.py install
-cd ..
-python3 zhihuspider.py 
-pip install requests
-pip3 install requests
-easy_install pip3
-sudo easy_install pip3
-sudo  python3 -m pip install 
-sudo  python -m pip install 
-sudo  python -m pip install requests
-sudo  python3 -m pip install requests
-sudo  python3 
-python3.4 -m pip install requests
-python3.4 -m pip install 、
-python3.4 -m pip install 
-python3.4 -m pip install math
-python3.4 -m pip install requests
-cd ..
-python3.4 -m pip install requests
-git clone https://github.com/egrcc/zhihu-python
-ls
-cd zhihu-python/
-ls
-python auth.py 
-pip install termcolor
-python auth.py 
-sudo pip2 install -r requirements.txt
-python auth.py 
-python
-python -m pdb auth.py 
-vim auth.py 
-python auth.py 
-tar --help
-ls
-cd zhihu
-ls
-cd ..
-ls
-cd zhihu-python/
-ls
-sz verify.gif 
-git clone https://github.com/zyearn/zaver.git
-ls
-cd zaver/
-ls
-mkdir build && cd build
-cmake .. && make
-yum install cmake
-sudo yum install cmake
-cmake .. && make
-cd .. && ./build/zaver -c zaver.conf
-ls
-vim CMakeLists.txt 
-cat LICENSE 
-ls
-vim zaver.conf 
-vim html/
-cd build/
-ls
-./zaver 
-cd ..
-ls
-clc
-clear
-ls
-cd netProgram/
-ls
-cd ..
-rm -rf pip-1.5.5/
-ls
-sudo rm -rf pip-1.5.5/
-rm 1.5*
-rm 1.txt
-rm a.out
-rm eightQ.c
-rm mutex.c mymalloc.c rio.c test.c vtest.c thpool.c tt.c vf.c vt.c t.c ls.txt heap.c client.c client2.c a.out ab README.md 
-ls
-rm -rf a.*
-ls
-rm -rf d.*
-ls
-lks
-ls
-rm skdf\' sin.cpp pthread.c LICENSE memcheck.c Dstat.c data.txt cio.c 3 select.c server_no_block.c tetetepoll.c 
-ls
-mkdir Cplus
-mv byteorder_test.c printFlag.c sizeof_test.c Cplus/
-ls
-rm example.c mm STDOUT tmp.c dynamiccast.c STDOUT 
-ls
-rm sdfkahdfkahdfka 
-ls
-cd thread
-ls
-cd threads_demo/
-ls
-cd pro_con/
-ls
-ll
-ls
-rm core.*
-ls
-vim makefile
-vim file.c 
-vim inc_CAS.cpp 
-vim pro_con_queue_cas.cpp 
-vim makefile
-vim makefile_queue 
-vim makefile_vector 
-vim makefile
-vim makefile_vector 
-vim pro_con_queue_cas.cpp 
-ls
-vim pro_con_queue
-vim pro_con_queue.cpp 
-make makefile_queue 
-make -f  makefile_queue 
-ls
-rm a.out 
-rm main
-rm main_queue 
-rm main_vector 
-ls
-vim makefile_queue 
-make -f makefile_queue 
-ls
-./main_queue 
-ls
-vim makefile_queue 
-vim pro_con_queue
-vim pro_con_queue.cpp 
-ls
-vim pro_con_queue.cpp 
-cp pro_con_queue.cpp  pro_con_queue2.cpp
-vim makefile_queue 
-g++ -o main_queue2  pro_con_queue2.cpp -pthread
-vim pro_con_queue2.cpp 
-./main_queue
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-ls
-rm main_queue
-ls
-make -f makefile_queue 
-ls
-./main_queue
-vim pro_con_queue
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-vim pro_con_queue.cpp 
-:q
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-ls
-./main_queue
-ls
-vim pro_con_queue.cpp 
-rm main_queue
-make -f makefile_queue 
-./main_queue
-lsclear
-ls
-./main_queue
-vim pro_con_queue.cpp 
-ls 
-make -f makefile_queue 
-./main_queue
-vim pro_con_queue.cpp 
-make -f makefile_queue 
-make -f makefile_queue  clean
-ls
-rm make_queue
-ls
-rm main_queue
-ls
-make -f makefile_queue 
-ls
-./main_queue
-git
-ls
-cd ..
-ls
-cd ..
-ls
-git init
-ls
-git status
-ls
-rm -rf zhihu-python
-ls
-rm -rf zhihu
-sudo rm -rf zhihu
-ls
-kls
-git status
-rm
-git rm --help
-git add Cplus 
-ls
-git status
-ls
-git checkout -- Dstat.c
-ls
-git status
-ls
-rm Dstat.c 
-ls
-git status
-cd Cplus/
-ls
-vim byteorder_test.c 
-git status
-ls
-cd ..
-ls
-git status
-ls
-ll
-ls -a
-rm .git
-rm -rf .git
-git status
-ls
-touch 1.txt
-touch 2.txt
-git init
-git status
-vim 1.txt
-git stauts
-git status
-git add 2.txt
-git status
-vim 1.txt
-git status
-vim 2.txt
-git status
-git add 2.txt
-git status
-git commit -m "fir commit"
-git config --global mm@qq.com
-git config --global user.email  mm@qq.com
-git config --global user.name  ldd
-git commit -m 
-git commit -m "first"
-git status
-git remote add orgin git@github.com:dandanlinpu/ljtCloudOSHomeDIrectory.git
-git status
-git push -u orgin master
-ls -a
-ssh  ssh-keygen -t rsa -C "youremail@example.com"
-ssh -keygen -t rsa -C "273041937@q.com"
-ssh-keygen -t rsa -C "273041937@q.com"
-ls
-cd .ssh
-ls
-vim id_rsa.pub 
-ssh-keygen -t rsa -C "user1@qq.com"
-cd .ssh
-ssh-keygen -t rsa -C "user1@qq.com"
-cd .ssh
-ls
-cd ..
-rm -rf .ssh
-ssh-keygen -t rsa -C "user1@qq.com"
-cd .ssh
-vim id_rsa.pub 
-git remote add origin git@github.com:dandanlinpu/ljtCloudOSHomeDIrectory.git
-git push -u origin master
-git status
-git --help
-git --help -a
-git status
-git branch
-git status
-cd ..
-git status
-git push -u orgin master
-git status
-git add 1.txt
-git status
-git push orgin master
-git commit -m "lll"
 git push orgin master
 git add gdb_learn/ netProgram/ threadpool/ threads_demo/ zaver Cplus/
 git commit -m "首次同步"
@@ -998,3 +699,302 @@ vim simple_server.c
 nc 127.0.0.1 10000
 ls
 top
+ls
+git init
+git branch 
+git branch -r
+git remote
+git remote orgin
+git remote -v orgin
+git remote -v 
+git remote rm orgin
+git remote rm origin
+dir
+git remote
+git remote -v
+git branch
+git branch -r
+git remote branch
+git branch -a
+git branch --help
+git merge
+git merge --help
+ls
+mkdir gittest
+cd gittest/
+ls
+git init
+git branch
+类似-a
+ls =a
+ls -a
+echo "firt file">>test.c
+vim test.c
+git status
+git branch
+git branchs
+git branch -a
+git add test.c
+git status
+git commit -m "第一个文件"
+git status
+git branch
+git status\
+git status
+vim test.c
+git status
+git add test.c
+git commit -m "第二次master提交"
+log
+git log
+git reflog
+git branch dev
+git branch idea
+git branch
+git checkout dev
+vim test.c 
+git checkout idea
+vim test.c
+git checkout dev
+vim test.c 
+git status
+git add test.c
+git commit -m "dev add line"
+git status
+git reflog
+git log
+git status
+git checkout idea
+vim test.c 
+git status
+git add test.c
+git commit -m "idea add onel line"
+git status
+git branch 
+git merge defv
+git merge dev
+ls
+vim test.c 
+git merge dev
+vim test.c 
+git add test.c
+git commit -m "process dev and idea conflict"
+git status
+git branch 
+git merge dev
+git status
+cd ..
+ks
+ls
+git status
+git add .
+git status
+git remote
+git commit -m "first commit all files."
+git status
+ls
+rm a.out 
+git status
+git remote add origin https://github.com/dandanlinpu/aliyun.git
+git status
+git rm 1.txt 2.txt a.out netProgram/client.c
+git status
+git commit -m "not important"
+git status
+git remote 
+git remote -a
+git remote -v
+git branch -r
+git branch -a
+git push origin master
+git branch dev
+git checkout dev
+status
+git status 
+cd gittest/
+dir
+git status
+git branch 
+git log
+git merge dev
+git status 
+git branch 
+cat test.c 
+vim test.c 
+git add test.c
+git commit -m "dev"
+git status
+git branch 
+vim test.c 
+git status
+git add test.c
+git commit -m "on idea"
+git checkout dev
+vim test.c 
+git checkout idea 
+cat test.c 
+git checkout dev
+cat test.c 
+git merge idea 
+cat test.c 
+git branch 
+vim test.c 
+git status
+git add test.c
+git commit -m "dd"
+git sta
+git branch 
+git merge idea 
+git status 
+cat test.c 
+git branch idea 
+git checkout idea 
+git sta
+
+git branch idea 
+git checkout idea 
+vim test.c 
+git add  test.c
+git commit -m "idea things"
+git log
+git sta
+git status 
+git checkout dev
+cat test.c 
+git merge idea
+cd ..
+git status
+cd netProgram/
+dir
+git status
+dir
+ls
+vim simple_server.c
+g++ simple_server.c -o server
+./server 
+vim simple_server.c
+git push origin master
+git status
+git add simple_server.c
+git commit -m "no important"
+git push origin master
+vim simple_server.c 
+git status
+git remote -a
+git remote -v
+vim simple_server.c
+git branch 
+git branch master 
+ls
+vim simple_server.c 
+git checkout master 
+git status
+vim simple_server.c 
+git merge dev
+vim simple_server.c
+git status 
+git branch -d dev
+git staus
+git status 
+git push origin master
+ls
+git status
+git branch 
+git simple_net_demo/
+ls
+cd simple_net_demo/
+ls
+vim makefile 
+make
+make clean
+rm a.out 
+ls
+vim common.c 
+mc common.c sock_common.c
+mv common.c sock_common.c
+mv common.h  sock_common.h
+ls
+make
+vim client.c 
+vim client.h
+vim server.c 
+make
+vim makefile 
+make
+vim sock_common.c
+make
+./server 
+vim makefile 
+make
+./server 
+./client 
+tcpdump -i any tcp dump 1000
+tcpdump -i any tcp dump 10000
+sudo tcpdump -i any tcp dump 10000
+sudo tcpdump -i any tcp port 10000
+cd gittest/
+git  status 
+git checkout idea
+nc 127.0.0.1 10000
+ls
+cd ..
+ls
+cd netProgram/simple_net_demo/
+./client 
+vim makefile 
+ks
+ls
+vim sock_common.c
+ls
+make
+./server 
+ls
+cd ..
+git commit -a -m "simple_net_demo: add fcntl error process"
+git push origin master
+git remote -v
+git remote rm origin
+git status
+git remote 
+git remote add git@github.com:dandanlinpu/aliyun.git
+git remote add origin git@github.com:dandanlinpu/aliyun.git
+git status
+git remote 
+git remote  -v
+git push origin master
+cd ..
+ls
+cd netProgram/
+ls
+cd simple_net_demo/
+l;s
+ls
+git status
+git commit -a "simple_net_demo change filename common.h/c to sock_common.h/c "
+git commit -a -m "simple_net_demo change filename common.h/c to sock_common.h/c "
+git push
+git push origin master 
+ls
+git status
+ls
+git status
+git commit -a "all update"
+git commit -a -m "all update"
+git push origin master
+ls
+rm gittest/
+rm -rf gittest/
+rm -rf zaver/
+git commit -a -m "update all"
+git push origin master
+ls
+git status
+git add netProgram/simple_net_demo/sock_common.c 
+git add netProgram/simple_net_demo/sock_common.h
+git commit -m "update all"
+git push  origin  master
+ls
+cd netProgram/
+ls
+vim simple_server.c
+vim rio.c

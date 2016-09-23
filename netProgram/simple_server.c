@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "rio.h"
 int open_listenfd(int port){
   int listenfd;
   //socket 
@@ -119,26 +120,10 @@ int main(){
 	    
 	}else if(events[i].events & EPOLLIN){
             printf("process EPOLLIN, fd:%d \n",events[i].data.fd);
- 	    int  n_read=0;
-            int  n=0;
 	    int  bufsize=2000;
             char r_buf[bufsize];
- 	    while( bufsize-n>0 && (n_read=read(events[i].data.fd,r_buf+n, bufsize-n)) > 0){
-	    	n+=n_read;
-	    } 
-            if(n==bufsize){
- 	        printf("too much data, application buf is not enough to hold all data\n");
-		exit(0);
-            } 
-	    if(n_read==-1){
-		if(errno==EAGAIN){
-		   printf("has read all data \n");
-		}else{
-		   perror("read error");
-		   exit(-1);
-		}
-	    }
-            printf("read %d bytes data:%s \n",n,r_buf);
+            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize);
+            printf("read %d bytes data:%s \n",n_read,r_buf);
             
 	    //epoll_ctl MOD:when receive data,use this fd to write data.
             struct epoll_event ev;
@@ -156,20 +141,10 @@ int main(){
               	w_buf[_i]=_i+'1'; 
  		if(_i==(bufsize-1))   w_buf[bufsize-1]='\0';
             }
-	    int n_write=0;
-            int n=0;
-            while( bufsize-n>0 && (n_write=write(events[i].data.fd,w_buf+n,bufsize-n))>0 ){
-            	n+=n_write;
-            }
-            if(n_write==-1){
-		if(errno==EAGAIN){
- 		   printf("tcp send buf is full,please wait. \n");
-		}else{
-		   perror("write error");
-		   exit(-1);
-		}
-	    }
-	    printf("write %d bytes data:%s \n",n,w_buf);
+            int n_write=rio_writen(events[i].data.fd,w_buf,bufsize);
+	    printf("write %d bytes data:%s \n",n_write,w_buf);
+            //将会从epoll监听的描述符中去除
+            close(events[i].data.fd);
  	}
    
      }//for 

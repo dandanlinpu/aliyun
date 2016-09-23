@@ -19,8 +19,13 @@ $
 # Command Line History (newest to oldest):
 :q
 :w
-:sp ../simple_server.c
 :wq
+:e
+:we
+:sp rio.c
+:sp ./simple_net_demo/sock_common.h
+:sp ./simple_net_demo/server.c
+:sp ../simple_server.c
 :! g++ simple_server.c
 :set nu
 :Lwq
@@ -35,7 +40,6 @@ $
 :qw
 :ewq
 :sp add.c
-:we
 :! ./a.out
 :! gcc client.c
 :sp netProgram/simple_client.c
@@ -63,10 +67,6 @@ $
 :qall
 :1,$s/buff_size/10/
 :s/buff_size/5/
-:wq!\
-:1,$s/}/)/g
-:1,$s/{/(/g
-:%s/{/(/
 
 # Search String History (newest to oldest):
 ?/islog
@@ -128,48 +128,71 @@ $
 
 # Registers:
 "0	LINE	0
-	   cflags=cflags|O_NONBLOCK;
-	   if(fcntl(fd,F_SETFL,cflags)){
-	   	perror("fcntl_2 error");
-		exit(-1);
-	   };
+	        printf("nread %d bytes this time.\n",nread);
 ""1	LINE	0
-	   fcntl(fd,F_SETFL,cflags|O_NONBLOCK);
+		    
 "2	LINE	0
-	
+		      printf("signal interupt read, cant not write data this time.\n");	
 "3	LINE	0
-	   if(cflags==-1){
+		    }
 "4	LINE	0
-	   }
+			}
 "5	LINE	0
-	idea add one line
+			   exit(-1);
 "6	LINE	0
-	on dev 
+	            int n=0;
+	            
+	            while( bufsize-n>0 && (n_write=write(evednts[i].data.fd,w_buf+n,bufsize-n))>0 ){
+	            	n+=n_write;
+	            }
+	            if(n_write==-1){
+			if(errno==EAGAIN){
+	 		   printf("tcp send buf is full,please wait. \n");
+			}else{
+			   perror("write error");
 "7	LINE	0
-	dsaf
+	            int  n=0;
 "8	LINE	0
-	>>>>>>> dev
+	 	    int  n_readd0;
 "9	LINE	0
-	=======
+		    }
 "q	CHAR	0
 	
 "-	CHAR	0
-	c
+	 
 
 # File marks:
-'0  10  16  ~/netProgram/simple_server.c
-'1  2  0  ~/netProgram/simple_net_demo/makefile
-'2  1  15  ~/netProgram/simple_net_demo/sock_common.c
-'3  6  21  ~/netProgram/simple_net_demo/makefile
-'4  1  21  ~/netProgram/simple_net_demo/server.c
-'5  1  0  ~/netProgram/simple_net_demo/client.h
-'6  1  14  ~/netProgram/simple_net_demo/client.c
-'7  5  0  ~/netProgram/simple_net_demo/common.c
-'8  3  0  ~/netProgram/simple_net_demo/makefile
-'9  139  1  ~/netProgram/simple_server.c
+'0  148  2  ~/netProgram/simple_server.c
+'1  20  8  ~/netProgram/rio.c
+'2  10  8  ~/netProgram/rio.c
+'3  9  32  ~/netProgram/rio.c
+'4  8  19  ~/netProgram/rio.c
+'5  14  21  ~/netProgram/rio.c
+'6  32  18  ~/netProgram/rio.c
+'7  40  14  ~/netProgram/rio.c
+'8  6  3  ~/netProgram/makefile
+'9  138  27  ~/netProgram/simple_server.c
 
 # Jumplist (newest first):
--'  10  16  ~/netProgram/simple_server.c
+-'  148  2  ~/netProgram/simple_server.c
+-'  138  12  ~/netProgram/simple_server.c
+-'  20  8  ~/netProgram/rio.c
+-'  10  14  ~/netProgram/rio.c
+-'  9  7  ~/netProgram/rio.c
+-'  8  4  ~/netProgram/rio.c
+-'  33  14  ~/netProgram/rio.c
+-'  14  14  ~/netProgram/rio.c
+-'  32  4  ~/netProgram/rio.c
+-'  40  14  ~/netProgram/rio.c
+-'  6  3  ~/netProgram/makefile
+-'  8  1  ~/netProgram/makefile
+-'  3  4  ~/netProgram/rio.c
+-'  145  16  ~/netProgram/simple_server.c
+-'  1  0  ~/netProgram/rio.h
+-'  60  0  ~/netProgram/simple_server.c
+-'  90  5  ~/netProgram/simple_server.c
+-'  1  0  ~/netProgram/rio.c
+-'  10  0  ~/netProgram/simple_server.c
 -'  58  2  ~/netProgram/simple_net_demo/sock_common.c
 -'  1  0  ~/netProgram/simple_net_demo/sock_common.c
 -'  2  0  ~/netProgram/simple_net_demo/makefile
@@ -182,77 +205,64 @@ $
 -'  1  14  ~/netProgram/simple_net_demo/client.c
 -'  5  0  ~/netProgram/simple_net_demo/common.c
 -'  59  0  ~/netProgram/simple_net_demo/common.c
--'  139  1  ~/netProgram/simple_server.c
--'  125  12  ~/netProgram/simple_server.c
--'  96  12  ~/netProgram/simple_server.c
--'  122  6  ~/netProgram/simple_server.c
--'  166  6  ~/netProgram/simple_server.c
--'  160  19  ~/netProgram/simple_server.c
--'  124  5  ~/netProgram/simple_server.c
--'  148  16  ~/netProgram/simple_server.c
+-'  126  1  ~/netProgram/simple_server.c
+-'  124  12  ~/netProgram/simple_server.c
+-'  97  12  ~/netProgram/simple_server.c
+-'  123  6  ~/netProgram/simple_server.c
+-'  133  16  ~/netProgram/simple_server.c
 -'  3  15  ~/gittest/test.c
 -'  2  0  ~/gittest/test.c
 -'  4  0  ~/gittest/test.c
 -'  1  0  ~/gittest/test.c
--'  65  0  ~/netProgram/simple_server.c
--'  118  5  ~/netProgram/simple_server.c
--'  136  2  ~/netProgram/simple_server.c
--'  167  2  ~/netProgram/simple_server.c
--'  172  5  ~/netProgram/simple_server.c
--'  157  3  ~/netProgram/simple_server.c
--'  159  5  ~/netProgram/simple_server.c
--'  129  1  ~/netProgram/simple_server.c
--'  126  6  ~/netProgram/simple_server.c
--'  158  16  ~/netProgram/simple_server.c
--'  156  15  ~/netProgram/simple_server.c
--'  153  12  ~/netProgram/simple_server.c
--'  147  12  ~/netProgram/simple_server.c
--'  152  12  ~/netProgram/simple_server.c
--'  176  3  ~/netProgram/simple_server.c
--'  92  12  ~/netProgram/simple_server.c
--'  121  13  ~/netProgram/simple_server.c
--'  151  1  ~/netProgram/simple_server.c
--'  111  5  ~/netProgram/simple_server.c
--'  113  32  ~/netProgram/simple_server.c
--'  97  47  ~/netProgram/simple_server.c
--'  90  5  ~/netProgram/simple_server.c
--'  51  3  ~/netProgram/simple_server.c
--'  53  4  ~/netProgram/simple_server.c
--'  112  16  ~/netProgram/simple_server.c
--'  99  8  ~/netProgram/simple_server.c
--'  128  6  ~/netProgram/simple_server.c
--'  138  5  ~/netProgram/simple_server.c
--'  120  1  ~/netProgram/simple_server.c
--'  119  7  ~/netProgram/simple_server.c
--'  177  0  ~/netProgram/simple_server.c
--'  84  2  ~/netProgram/simple_server.c
--'  178  0  ~/netProgram/simple_server.c
+-'  66  0  ~/netProgram/simple_server.c
+-'  119  5  ~/netProgram/simple_server.c
+-'  142  3  ~/netProgram/simple_server.c
+-'  144  5  ~/netProgram/simple_server.c
+-'  143  16  ~/netProgram/simple_server.c
+-'  141  15  ~/netProgram/simple_server.c
+-'  132  12  ~/netProgram/simple_server.c
+-'  137  12  ~/netProgram/simple_server.c
+-'  151  3  ~/netProgram/simple_server.c
+-'  93  12  ~/netProgram/simple_server.c
+-'  122  13  ~/netProgram/simple_server.c
+-'  136  1  ~/netProgram/simple_server.c
+-'  112  5  ~/netProgram/simple_server.c
+-'  114  32  ~/netProgram/simple_server.c
+-'  98  47  ~/netProgram/simple_server.c
+-'  91  5  ~/netProgram/simple_server.c
+-'  52  3  ~/netProgram/simple_server.c
+-'  54  4  ~/netProgram/simple_server.c
+-'  113  16  ~/netProgram/simple_server.c
+-'  100  8  ~/netProgram/simple_server.c
+-'  121  1  ~/netProgram/simple_server.c
+-'  120  7  ~/netProgram/simple_server.c
+-'  152  0  ~/netProgram/simple_server.c
+-'  85  2  ~/netProgram/simple_server.c
+-'  153  0  ~/netProgram/simple_server.c
 -'  5  1  ~/netProgram/simple_net_demo/makefile
 -'  6  2  ~/netProgram/simple_net_demo/server.c
 -'  60  0  ~/netProgram/simple_net_demo/common.c
 -'  1  0  ~/netProgram/simple_net_demo/common.c
 -'  22  13  ~/netProgram/simple_net_demo/common.c
--'  88  5  ~/netProgram/simple_server.c
+-'  89  5  ~/netProgram/simple_server.c
 -'  4  0  ~/netProgram/1.c
 -'  1  0  ~/netProgram/1.c
 -'  9  0  ~/netProgram/simple_server.c
 -'  4  0  ~/netProgram/simple_server.c
--'  77  2  ~/netProgram/simple_server.c
 -'  78  2  ~/netProgram/simple_server.c
--'  89  5  ~/netProgram/simple_server.c
--'  41  0  ~/netProgram/simple_server.c
--'  71  2  ~/netProgram/simple_server.c
+-'  79  2  ~/netProgram/simple_server.c
+-'  42  0  ~/netProgram/simple_server.c
+-'  72  2  ~/netProgram/simple_server.c
 -'  1  0  ~/netProgram/simple_server
 -'  1  0  ~/netProgram/simple_server.c
--'  22  0  ~/netProgram/simple_server.c
--'  13  0  ~/netProgram/simple_server.c
+-'  23  0  ~/netProgram/simple_server.c
+-'  14  0  ~/netProgram/simple_server.c
 -'  1  0  ~/netProgram/simple_select.c
 -'  11  2  ~/netProgram/simple_net_demo/server.c
 -'  7  0  ~/netProgram/simple_demo/server.c
 -'  18  2  ~/netProgram/simple_demo/server.c
 -'  5  35  ~/netProgram/simple_demo/client.c
 -'  2  0  ~/netProgram/simple_demo/client.c
--'  8  1  ~/netProgram/makefile
 -'  33  0  ~/netProgram/simple_demo/client.c
 -'  1  0  ~/netProgram/simple_demo/client.c
 -'  31  0  ~/netProgram/common.c
@@ -260,14 +270,283 @@ $
 -'  38  0  ~/netProgram/common.c
 -'  14  0  ~/netProgram/common.c
 -'  37  0  ~/netProgram/common.c
--'  2  0  ~/netProgram/common.c
--'  2  0  ~/netProgram/simple_server.c
--'  11  4  ~/netProgram/simple_server.c
--'  1  4  ~/netProgram/simple_client.c
--'  2  0  ~/netProgram/simple_net_demo/makefile
--'  1  15  ~/netProgram/simple_net_demo/makefile
 
 # History of marks within files (newest to oldest):
+
+> ~/netProgram/simple_server.c
+	"	148	2
+	^	146	55
+	.	146	52
+	+	145	23
+	+	145	28
+	+	145	4
+	+	145	20
+	+	145	2
+	+	145	37
+	+	145	8
+	+	145	1
+	+	145	27
+	+	145	13
+	+	145	33
+	+	126	39
+	+	140	36
+	+	141	25
+	+	141	29
+	+	143	33
+	+	145	58
+	+	126	49
+	+	126	0
+	+	126	0
+	+	126	0
+	+	143	0
+	+	144	38
+	+	148	0
+	+	144	6
+	+	144	1
+	+	144	0
+	+	144	32
+	+	138	26
+	+	141	28
+	+	144	0
+	+	144	0
+	+	142	22
+	+	144	0
+	+	142	23
+	+	142	23
+	+	142	23
+	+	128	4
+	+	73	14
+	+	73	15
+	+	74	2
+	+	76	1
+	+	74	28
+	+	75	8
+	+	74	30
+	+	75	13
+	+	81	57
+	+	84	1
+	+	82	21
+	+	106	58
+	+	106	63
+	+	106	59
+	+	109	2
+	+	106	66
+	+	107	9
+	+	108	18
+	+	107	0
+	+	132	72
+	+	135	0
+	+	133	15
+	+	134	6
+	+	133	15
+	+	135	4
+	+	82	26
+	+	107	39
+	+	82	36
+	+	133	37
+	+	141	30
+	+	152	0
+	+	126	27
+	+	145	33
+	+	123	18
+	+	126	27
+	+	126	11
+	+	126	84
+	+	126	9
+	+	123	18
+	+	123	0
+	+	123	18
+	+	145	41
+	+	145	12
+	+	145	0
+	+	14	14
+	+	13	0
+	+	14	14
+	+	145	20
+	+	145	12
+	+	144	11
+	+	123	21
+	+	126	0
+	+	125	21
+	+	123	0
+	+	125	65
+	+	126	51
+	+	145	0
+	+	144	65
+	+	145	46
+	+	144	0
+	+	147	36
+	+	146	52
+	a	64	10
+
+> ~/netProgram/rio.c
+	"	2	8
+	^	30	67
+	.	39	0
+	+	30	115
+	+	5	19
+	+	9	3
+	+	6	36
+	+	6	58
+	+	6	37
+	+	6	7
+	+	6	44
+	+	6	47
+	+	6	39
+	+	6	43
+	+	34	23
+	+	6	59
+	+	6	47
+	+	6	58
+	+	7	18
+	+	6	56
+	+	6	54
+	+	6	48
+	+	6	55
+	+	6	60
+	+	6	76
+	+	29	34
+	+	32	0
+	+	9	0
+	+	21	0
+	+	30	54
+	+	6	91
+	+	6	37
+	+	20	18
+	+	6	57
+	+	6	7
+	+	6	16
+	+	6	45
+	+	6	65
+	+	29	29
+	+	1	122
+	+	23	66
+	+	23	84
+	+	1	14
+	+	2	131
+	+	6	58
+	+	34	21
+	+	6	56
+	+	6	52
+	+	19	108
+	+	20	0
+	+	19	63
+	+	6	51
+	+	37	51
+	+	6	65
+	+	6	44
+	+	6	72
+	+	6	53
+	+	6	77
+	+	6	37
+	+	6	56
+	+	6	72
+	+	6	47
+	+	6	52
+	+	6	57
+	+	6	45
+	+	6	8
+	+	6	24
+	+	6	0
+	+	12	27
+	+	13	28
+	+	6	0
+	+	6	0
+	+	10	4
+	+	12	4
+	+	11	4
+	+	12	9
+	+	12	9
+	+	14	9
+	+	18	3
+	+	14	34
+	+	15	5
+	+	13	8
+	+	14	1
+	+	12	11
+	+	15	12
+	+	17	8
+	+	16	7
+	+	14	3
+	+	16	16
+	+	14	34
+	+	16	36
+	+	6	0
+	+	8	0
+	+	5	15
+	+	5	15
+	+	6	8
+	+	5	34
+	+	6	0
+	+	5	39
+	+	12	19
+	+	30	62
+	+	37	0
+	+	39	0
+
+> ~/netProgram/simple_epoll_demo/simple_server.c
+	"	100	1
+	^	161	78
+	.	161	75
+	+	57	30
+	+	178	0
+	+	177	0
+	+	167	0
+	+	58	0
+	+	167	0
+	+	176	10
+	+	58	0
+	+	175	25
+	+	171	0
+	+	174	0
+	+	173	5
+	+	174	0
+	+	164	0
+	+	162	32
+	+	161	75
+
+> ~/rio.c
+	"	1	0
+
+> ~/netProgram/makefile
+	"	6	3
+	^	6	4
+	.	6	3
+	+	8	4
+	+	3	34
+	+	4	3
+	+	6	3
+
+> ~/netProgram/rio.h
+	"	1	0
+	^	13	38
+	.	1	0
+	+	1	0
+	+	13	0
+	+	14	38
+	+	13	37
+	+	1	0
+
+> ~/netProgram/simple_epoll_demo/makefile
+	"	4	3
+	^	4	4
+	.	4	3
+	+	5	0
+	+	6	18
+	+	1	25
+	+	2	24
+	+	4	3
+
+> ~/netProgram/simple_net_demo/server.c
+	"	1	0
+	^	1	15
+	.	1	14
+	+	11	4
+	+	6	10
+	+	1	14
+
+> ~/netProgram/simple_net_demo/sock_common.h
+	"	1	0
 
 > ~/netProgram/simple_net_demo/sock_common.c
 	"	39	5
@@ -279,112 +558,6 @@ $
 	+	58	0
 	+	62	0
 	+	67	0
-
-> ~/netProgram/simple_server.c
-	"	10	16
-	^	160	17
-	.	166	0
-	+	155	31
-	+	154	12
-	+	153	28
-	+	154	27
-	+	155	39
-	+	158	11
-	+	156	18
-	+	154	18
-	+	156	25
-	+	161	12
-	+	158	13
-	+	161	9
-	+	159	17
-	+	160	19
-	+	159	17
-	+	161	11
-	+	161	74
-	+	163	11
-	+	162	23
-	+	164	28
-	+	171	4
-	+	165	20
-	+	167	2
-	+	166	37
-	+	167	8
-	+	170	1
-	+	168	27
-	+	169	13
-	+	172	33
-	+	141	39
-	+	155	36
-	+	156	25
-	+	156	29
-	+	158	33
-	+	161	58
-	+	126	49
-	+	133	0
-	+	129	0
-	+	133	0
-	+	158	0
-	+	159	38
-	+	173	0
-	+	159	6
-	+	159	1
-	+	159	0
-	+	159	32
-	+	153	26
-	+	156	28
-	+	159	0
-	+	159	0
-	+	157	22
-	+	159	0
-	+	157	23
-	+	157	23
-	+	157	23
-	+	143	4
-	+	72	14
-	+	72	15
-	+	73	2
-	+	75	1
-	+	73	28
-	+	74	8
-	+	73	30
-	+	74	13
-	+	80	57
-	+	83	1
-	+	81	21
-	+	105	58
-	+	105	63
-	+	105	59
-	+	108	2
-	+	105	66
-	+	106	9
-	+	107	18
-	+	106	0
-	+	147	72
-	+	150	0
-	+	148	15
-	+	149	6
-	+	148	15
-	+	150	4
-	+	81	26
-	+	106	39
-	+	81	36
-	+	148	37
-	+	156	30
-	+	177	0
-	+	126	27
-	+	161	33
-	+	124	18
-	+	129	27
-	+	132	11
-	+	130	84
-	+	131	9
-	+	124	18
-	+	124	0
-	+	124	18
-	+	166	41
-	+	161	12
-	+	166	0
-	a	63	10
 
 > ~/netProgram/simple_net_demo/makefile
 	"	2	0
@@ -402,14 +575,6 @@ $
 	+	2	0
 	+	2	0
 	+	2	32
-
-> ~/netProgram/simple_net_demo/server.c
-	"	1	21
-	^	1	15
-	.	1	14
-	+	11	4
-	+	6	10
-	+	1	14
 
 > ~/netProgram/simple_net_demo/client.h
 	"	1	0
@@ -470,87 +635,3 @@ $
 	+	1	17
 	+	2	0
 	+	5	35
-
-> ~/netProgram/makefile
-	"	8	1
-	^	8	35
-	.	8	4
-	+	8	4
-
-> ~/netProgram/simple_demo/common.c
-	"	41	0
-	^	41	0
-	.	35	0
-	+	57	0
-	+	40	0
-	+	57	0
-	+	40	0
-	+	25	0
-	+	35	0
-
-> ~/netProgram/simple_demo/makefile
-	"	8	16
-	^	8	17
-	.	8	16
-	+	1	3
-	+	1	0
-	+	1	0
-	+	1	18
-	+	8	0
-	+	7	2
-	+	8	16
-
-> ~/netProgram/simple_demo/common.h
-	"	16	27
-	^	16	28
-	.	16	27
-	+	16	0
-	+	16	27
-
-> ~/netProgram/common.c
-	"	31	0
-	^	38	0
-	.	38	0
-	+	1	19
-	+	2	0
-	+	39	0
-	+	38	0
-
-> ~/netProgram/common.h
-	"	1	0
-	^	15	28
-	.	15	27
-	+	16	0
-	+	1	0
-	+	2	0
-	+	1	0
-	+	13	29
-	+	14	0
-	+	15	0
-	+	15	0
-	+	14	0
-	+	15	0
-	+	14	48
-	+	15	27
-
-> ~/netProgram/simple_client.c
-	"	1	4
-	^	30	32
-	.	30	31
-	+	24	29
-	+	25	27
-	+	30	27
-	+	30	0
-	+	30	29
-	+	29	0
-	+	29	0
-	+	29	0
-	+	29	16
-	+	12	0
-	+	25	32
-	+	29	0
-	+	30	27
-	+	30	0
-	+	30	0
-	+	30	0
-	+	30	31

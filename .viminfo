@@ -17,9 +17,10 @@
 $
 
 # Command Line History (newest to oldest):
-:wq
 :q
 :w
+:sp ../simple_server.c
+:wq
 :! g++ simple_server.c
 :set nu
 :Lwq
@@ -66,7 +67,6 @@ $
 :1,$s/}/)/g
 :1,$s/{/(/g
 :%s/{/(/
-:1,$/{/(
 
 # Search String History (newest to oldest):
 ?/islog
@@ -128,48 +128,53 @@ $
 
 # Registers:
 "0	LINE	0
-	     perror("epoll_ctl error");
-	     exit(-1);
-"1	LINE	0
-	idea add one line
+	   cflags=cflags|O_NONBLOCK;
+	   if(fcntl(fd,F_SETFL,cflags)){
+	   	perror("fcntl_2 error");
+		exit(-1);
+	   };
+""1	LINE	0
+	   fcntl(fd,F_SETFL,cflags|O_NONBLOCK);
 "2	LINE	0
-	on dev 
+	
 "3	LINE	0
-	dsaf
+	   if(cflags==-1){
 "4	LINE	0
-	>>>>>>> dev
+	   }
 "5	LINE	0
-	=======
+	idea add one line
 "6	LINE	0
-	<<<<<<< HEAD
+	on dev 
 "7	LINE	0
-	  //read
+	dsaf
 "8	LINE	0
-	//  printf("read %d bytes data: %s \n",n,rbuf);
+	>>>>>>> dev
 "9	LINE	0
-	  //int n=read(connfd,rbuf,100);  
+	=======
 "q	CHAR	0
 	
-""-	CHAR	0
+"-	CHAR	0
 	c
 
 # File marks:
-'0  2  32  ~/netProgram/simple_net_demo/makefile
-'1  1  15  ~/netProgram/simple_net_demo/sock_common.c
-'2  6  21  ~/netProgram/simple_net_demo/makefile
-'3  1  21  ~/netProgram/simple_net_demo/server.c
-'4  1  0  ~/netProgram/simple_net_demo/client.h
-'5  1  14  ~/netProgram/simple_net_demo/client.c
-'6  5  0  ~/netProgram/simple_net_demo/common.c
-'7  3  0  ~/netProgram/simple_net_demo/makefile
-'8  139  1  ~/netProgram/simple_server.c
-'9  125  12  ~/netProgram/simple_server.c
+'0  10  16  ~/netProgram/simple_server.c
+'1  2  0  ~/netProgram/simple_net_demo/makefile
+'2  1  15  ~/netProgram/simple_net_demo/sock_common.c
+'3  6  21  ~/netProgram/simple_net_demo/makefile
+'4  1  21  ~/netProgram/simple_net_demo/server.c
+'5  1  0  ~/netProgram/simple_net_demo/client.h
+'6  1  14  ~/netProgram/simple_net_demo/client.c
+'7  5  0  ~/netProgram/simple_net_demo/common.c
+'8  3  0  ~/netProgram/simple_net_demo/makefile
+'9  139  1  ~/netProgram/simple_server.c
 
 # Jumplist (newest first):
--'  2  32  ~/netProgram/simple_net_demo/makefile
+-'  10  16  ~/netProgram/simple_server.c
+-'  58  2  ~/netProgram/simple_net_demo/sock_common.c
+-'  1  0  ~/netProgram/simple_net_demo/sock_common.c
+-'  2  0  ~/netProgram/simple_net_demo/makefile
 -'  1  15  ~/netProgram/simple_net_demo/makefile
 -'  6  0  ~/netProgram/simple_net_demo/makefile
--'  1  15  ~/netProgram/simple_net_demo/sock_common.c
 -'  3  0  ~/netProgram/simple_net_demo/makefile
 -'  1  21  ~/netProgram/simple_net_demo/server.c
 -'  12  2  ~/netProgram/simple_net_demo/server.c
@@ -231,7 +236,6 @@ $
 -'  4  0  ~/netProgram/1.c
 -'  1  0  ~/netProgram/1.c
 -'  9  0  ~/netProgram/simple_server.c
--'  10  0  ~/netProgram/simple_server.c
 -'  4  0  ~/netProgram/simple_server.c
 -'  77  2  ~/netProgram/simple_server.c
 -'  78  2  ~/netProgram/simple_server.c
@@ -260,57 +264,24 @@ $
 -'  2  0  ~/netProgram/simple_server.c
 -'  11  4  ~/netProgram/simple_server.c
 -'  1  4  ~/netProgram/simple_client.c
+-'  2  0  ~/netProgram/simple_net_demo/makefile
+-'  1  15  ~/netProgram/simple_net_demo/makefile
 
 # History of marks within files (newest to oldest):
 
-> ~/netProgram/simple_net_demo/makefile
-	"	2	32
-	^	2	33
-	.	2	32
-	+	5	11
-	+	7	4
-	+	5	0
-	+	4	21
-	+	5	18
-	+	7	18
-	+	6	21
-	+	2	28
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	32
-
 > ~/netProgram/simple_net_demo/sock_common.c
-	"	1	15
-	^	1	16
-	.	1	15
+	"	39	5
+	.	67	0
 	+	1	15
-
-> ~/netProgram/simple_net_demo/server.c
-	"	1	21
-	^	1	15
-	.	1	14
-	+	11	4
-	+	6	10
-	+	1	14
-
-> ~/netProgram/simple_net_demo/client.h
-	"	1	0
-
-> ~/netProgram/simple_net_demo/client.c
-	"	1	14
-	^	1	15
-	.	1	14
-	+	1	14
-
-> ~/netProgram/simple_net_demo/common.c
-	"	5	0
-	.	26	0
-	+	60	0
-	+	26	0
+	+	58	18
+	+	58	2
+	+	58	0
+	+	58	0
+	+	62	0
+	+	67	0
 
 > ~/netProgram/simple_server.c
-	"	139	1
+	"	10	16
 	^	160	17
 	.	166	0
 	+	155	31
@@ -414,6 +385,46 @@ $
 	+	161	12
 	+	166	0
 	a	63	10
+
+> ~/netProgram/simple_net_demo/makefile
+	"	2	0
+	^	2	33
+	.	2	32
+	+	5	11
+	+	7	4
+	+	5	0
+	+	4	21
+	+	5	18
+	+	7	18
+	+	6	21
+	+	2	28
+	+	2	0
+	+	2	0
+	+	2	0
+	+	2	32
+
+> ~/netProgram/simple_net_demo/server.c
+	"	1	21
+	^	1	15
+	.	1	14
+	+	11	4
+	+	6	10
+	+	1	14
+
+> ~/netProgram/simple_net_demo/client.h
+	"	1	0
+
+> ~/netProgram/simple_net_demo/client.c
+	"	1	14
+	^	1	15
+	.	1	14
+	+	1	14
+
+> ~/netProgram/simple_net_demo/common.c
+	"	5	0
+	.	26	0
+	+	60	0
+	+	26	0
 
 > ~/gittest/test.c
 	"	3	15

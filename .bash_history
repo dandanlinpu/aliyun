@@ -1,14 +1,3 @@
-git push orgin master
-git add gdb_learn/ netProgram/ threadpool/ threads_demo/ zaver Cplus/
-git commit -m "首次同步"
-git status
-git push orgin master
-touch mm
-git status
-git remote status
-git remote 
-git remote -v
-git push origin master
 git pull origin master
 cd ..
 ls
@@ -998,3 +987,14 @@ cd netProgram/
 ls
 vim simple_server.c
 vim rio.c
+nc 127.0.0.1 1000
+nc 127.0.0.1 10000
+vim rio.c
+nc 127.0.0.1 10000
+netstat
+nc 127.0.0.1 10000
+nc 127.0.0.1 10000.
+nc 127.0.0.1 10000
+nc 127.0.0.1 10000.
+6
+nc 127.0.0.1 10000.

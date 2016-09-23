@@ -8,7 +8,7 @@ int rio_readn(int fd,char *buf,int n){  //读取n个字节到buf中，要么读�
         printf("nread %d bytes this time.\n",nread);
     }  
     if(nread==0){
-         printf("read EOF.\n");
+         printf("read EOF.FIN\n");
     }else  if(nread==-1 ){
         if(errno==EAGAIN){
 	   printf("has read all tcp data\n");

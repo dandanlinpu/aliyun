@@ -120,9 +120,10 @@ int main(){
 	    
 	}else if(events[i].events & EPOLLIN){
             printf("process EPOLLIN, fd:%d \n",events[i].data.fd);
-	    int  bufsize=2000;
+	    int  bufsize=8192;
             char r_buf[bufsize];
-            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize);
+            memset(r_buf,0,bufsize);
+            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize); //client直接在nc上输入ctrl+d 服务器收到FIN：w
             printf("read %d bytes data:%s \n",n_read,r_buf);
             
 	    //epoll_ctl MOD:when receive data,use this fd to write data.
@@ -143,7 +144,7 @@ int main(){
             }
             int n_write=rio_writen(events[i].data.fd,w_buf,bufsize);
 	    printf("write %d bytes data:%s \n",n_write,w_buf);
-            //将会从epoll监听的描述符中去除
+            //简单的服务器：[接受client连接->接收client数据->发送数据-> ]断开连接,close将会从epoll监听的描述符中去除，并发送fin
             close(events[i].data.fd);
  	}
    

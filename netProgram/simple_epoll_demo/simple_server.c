@@ -1,59 +1,6 @@
-#include  <unistd.h>
-#include  <sys/types.h>       /* basic system data types */
-#include  <sys/socket.h>      /* basic socket definitions */
-#include  <sys/epoll.h>
-#include  <netinet/in.h>      /* sockaddr_in{} and other Internet defns */
-#include  <arpa/inet.h>       /* inet(3) functions */
-
-#include  <fcntl.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-
-int open_listenfd(int port){
-  int listenfd;
-  //socket 
-  listenfd=socket(AF_INET,SOCK_STREAM,0);
-  struct sockaddr_in servaddr;
-  bzero(&servaddr,sizeof(servaddr));
-  servaddr.sin_family=AF_INET;
-  servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
-  servaddr.sin_port=htons(port);
-  //bind
-  if(bind(listenfd,(struct sockaddr *) &servaddr,sizeof(servaddr))==-1){
-     perror("bind error");
-     exit(-1);
-  };
-  //listen
-  if(listen(listenfd,30)==-1){
-     perror("listen error");
-     exit(-1);
-  };
-  printf("open listenfd %d\n",listenfd);
-  return listenfd;
-}
-void print_sockinfo(struct sockaddr_in *client_addr){
-   if(client_addr==NULL) return;
-   char addrstr[INET_ADDRSTRLEN]; //16
-   int port;
-
-   inet_ntop(AF_INET,&(client_addr->sin_addr),addrstr,sizeof(addrstr));
-   port=ntohs(client_addr->sin_port);
-   printf("remote ip:%s port:%d\n",addrstr,port);
-}
-void set_fd_noblock(int fd){
-   int cflags=fcntl(fd,F_GETFL,0);
-   if(cflags==-1){
-   	perror("fcntl_1 error");
-	exit(-1);
-   }
-   cflags=cflags|O_NONBLOCK;
-   if(fcntl(fd,F_SETFL,cflags)){
-   	perror("fcntl_2 error");
-	exit(-1);
-   };
-}
+#include <sys/epoll.h>
+#include "sock_common.h"
+#include "rio.h"
 void epoll_process(int listenfd){
   //epoll_create 
   int epfd=epoll_create1(0);
@@ -107,31 +54,17 @@ void epoll_process(int listenfd){
 	    
 	}else if(events[i].events & EPOLLIN){
             printf("process EPOLLIN, fd:%d \n",events[i].data.fd);
- 	    int  n_read=0;
-            int  n=0;
-	    int  bufsize=2000;
+	    int  bufsize=8192;
             char r_buf[bufsize];
- 	    while( bufsize-n>0 && (n_read=read(events[i].data.fd,r_buf+n, bufsize-n)) > 0){
-	    	n+=n_read;
-	    } 
-            if(n==bufsize){
- 	        printf("too much data, application buf is not enough to hold all data\n");
-		exit(0);
-            } 
-	    if(n_read==-1){
-		if(errno==EAGAIN){
-		   printf("has read all data \n");
-		}else{
-		   perror("read error");
-		   exit(-1);
-		}
-	    }
-            printf("read %d bytes data:%s \n",n,r_buf);
+            memset(r_buf,0,bufsize);
+            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize); //client直接在nc上输入ctrl+d 服务器收到FIN：w
+            printf("read %d bytes data:%s \n",n_read,r_buf);
             
 	    //epoll_ctl MOD:when receive data,use this fd to write data.
             struct epoll_event ev;
             ev.data.fd=events[i].data.fd;
             ev.events=EPOLLOUT|EPOLLET;
+            printf("change fd %d to EPOLLOUT\n",events[i].data.fd);
             if(epoll_ctl(epfd,EPOLL_CTL_MOD,events[i].data.fd,&ev)==-1){
                 perror("epoll_ctl mod  error");
      		exit(-1);
@@ -144,34 +77,21 @@ void epoll_process(int listenfd){
               	w_buf[_i]=_i+'1'; 
  		if(_i==(bufsize-1))   w_buf[bufsize-1]='\0';
             }
-	    int n_write=0;
-            int n=0;
-            while( bufsize-n>0 && (n_write=write(events[i].data.fd,w_buf+n,bufsize-n))>0 ){
-            	n+=n_write;
-            }
-            if(n_write==-1){
-		if(errno==EAGAIN){
- 		   printf("tcp send buf is full,please wait. \n");
-		}else{
-		   perror("write error");
-		   exit(-1);
-		}
-	    }
-	    printf("write %d bytes data:%s \n",n,w_buf);
-            //close将会导致发送fin并且从epoll监听的队列中移除
+            int n_write=rio_writen(events[i].data.fd,w_buf,bufsize);
+	    printf("write %d bytes data:%s \n",n_write,w_buf);
+            //简单的服务器：[接受client连接->接收client数据->发送数据-> ]断开连接,close将会从epoll监听的描述符中去除，并发送fin
             close(events[i].data.fd);
  	}
    
      }//for 
- }  //while
-
+  }  //while
 }
 int main(){
   printf("epoll test main..\n");
-
+  
   //socket bind listen
-  int listenfd=open_listenfd(10000);
+  int  listenfd=open_listenfd(10000);
   set_fd_noblock(listenfd);
   epoll_process(listenfd);
   return 0;
-} 
+}

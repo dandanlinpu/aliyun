@@ -121,12 +121,15 @@ int main(){
             printf("process EPOLLIN, fd:%d \n",events[i].data.fd);
  	    int  n_read=0;
             int  n=0;
-	    int  bufsize=10;
+	    int  bufsize=2000;
             char r_buf[bufsize];
  	    while( bufsize-n>0 && (n_read=read(events[i].data.fd,r_buf+n, bufsize-n)) > 0){
 	    	n+=n_read;
 	    } 
-            
+            if(n==bufsize){
+ 	        printf("too much data, application buf is not enough to hold all data\n");
+		exit(0);
+            } 
 	    if(n_read==-1){
 		if(errno==EAGAIN){
 		   printf("has read all data \n");
@@ -160,7 +163,7 @@ int main(){
             }
             if(n_write==-1){
 		if(errno==EAGAIN){
- 		   printf("has write all data \n");
+ 		   printf("tcp send buf is full,please wait. \n");
 		}else{
 		   perror("write error");
 		   exit(-1);

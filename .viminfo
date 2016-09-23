@@ -8,7 +8,7 @@
 # hlsearch on (H) or off (h):
 ~H
 # Last Search Pattern:
-~MSle0~/islog
+~MSle0~/nnn
 
 # Last Substitute Search Pattern:
 ~MSle0&sock_cli
@@ -17,17 +17,18 @@
 $
 
 # Command Line History (newest to oldest):
-:wq
 :q
 :w
-:e
+:wq
+:sp http_server.c
+:set nu
 :we
+:e
 :sp rio.c
 :sp ./simple_net_demo/sock_common.h
 :sp ./simple_net_demo/server.c
 :sp ../simple_server.c
 :! g++ simple_server.c
-:set nu
 :Lwq
 :sp common.h
 :sp common.c
@@ -66,9 +67,11 @@ $
 :sp pro_cons2.cpp
 :qall
 :1,$s/buff_size/10/
-:s/buff_size/5/
 
 # Search String History (newest to oldest):
+?/nnn
+?/*
+?/buf
 ?/islog
 ?//islog
 ?/perror
@@ -116,9 +119,6 @@ $
 ? sockfd
 ? readn
 ?/readn
-?///
-?/select
-?/handle
 
 # Expression History (newest to oldest):
 
@@ -127,53 +127,106 @@ $
 # Input Line History (newest to oldest):
 
 # Registers:
-"0	LINE	0
-	        printf("nread %d bytes this time.\n",nread);
+""0	LINE	0
+	#include "rio.h"
 "1	LINE	0
-		g++ -o simple_client simple_client.c
+	#include "rio.h"
 "2	LINE	0
-	simple_client:simple_client.c
+	#include "rio.h"
+	void form_response_header(char *buf,int maxline,int filesize){
 "3	LINE	0
-		    
+	#include <sys/mman.h>
 "4	LINE	0
-		      printf("signal interupt read, cant not write data this time.\n");	
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <fcntl.h>
 "5	LINE	0
-		    }
+	
 "6	LINE	0
-			}
+	   printf("form_response_header: %s",buf);
 "7	LINE	0
-			   exit(-1);
+	 
 "8	LINE	0
-	            int n=0;
-	            
-	            while( bufsize-n>0 && (n_write=write(evednts[i].data.fd,w_buf+n,bufsize-n))>0 ){
-	            	n+=n_write;
-	            }
-	            if(n_write==-1){
-			if(errno==EAGAIN){
-	 		   printf("tcp send buf is full,please wait. \n");
-			}else{
-			   perror("write error");
+	   int maxline=1024;
+	   char h_buf[maxline];
+	   memset(h_buf,0,maxline);
+	   form_response_header(h_buf,maxline,1130);
 "9	LINE	0
-	            int  n=0;
+	  */
 "q	CHAR	0
 	
-""-	CHAR	0
-	t
+"-	CHAR	0
+	{
 
 # File marks:
-'0  6  0  ~/netProgram/simple_epoll_demo_1/makefile
-'1  123  21  ~/netProgram/simple_server.c
-'2  126  123  ~/netProgram/simple_server.c
-'3  148  12  ~/netProgram/simple_server.c
-'4  1  8  ~/netProgram/rio.c
-'5  118  1  ~/netProgram/simple_server.c
-'6  13  10  ~/netProgram/rio.c
-'7  1  0  ~/netProgram/rioc
-'8  2  0  ~/netProgram/rio.c
-'9  149  2  ~/netProgram/simple_server.c
+'0  97  0  ~/netProgram/simple_epoll_demo/simple_server.c
+'1  82  10  ~/netProgram/simple_epoll_demo/simple_server.c
+'2  45  0  ~/netProgram/online_matrix_calc/index.html
+'3  78  12  ~/netProgram/online_matrix_calc/simple_server.c
+'4  1  0  ~/netProgram/online_matrix_calc/simple_server
+'5  4  70  ~/netProgram/online_matrix_calc/makefile
+'6  75  12  ~/netProgram/online_matrix_calc/simple_server.c
+'7  1  0  ~/netProgram/online_matrix_calc/makefile
+'8  59  12  ~/netProgram/online_matrix_calc/simple_server.c
+'9  58  0  ~/netProgram/online_matrix_calc/simple_server.c
 
 # Jumplist (newest first):
+-'  97  0  ~/netProgram/simple_epoll_demo/simple_server.c
+-'  82  10  ~/netProgram/simple_epoll_demo/simple_server.c
+-'  1  0  ~/netProgram/simple_epoll_demo/simple_server.c
+-'  45  0  ~/netProgram/online_matrix_calc/index.html
+-'  78  12  ~/netProgram/online_matrix_calc/simple_server.c
+-'  75  12  ~/netProgram/online_matrix_calc/simple_server.c
+-'  1  0  ~/netProgram/online_matrix_calc/simple_server
+-'  4  70  ~/netProgram/online_matrix_calc/makefile
+-'  1  0  ~/netProgram/online_matrix_calc/makefile
+-'  59  12  ~/netProgram/online_matrix_calc/simple_server.c
+-'  58  5  ~/netProgram/online_matrix_calc/simple_server.c
+-'  101  0  ~/netProgram/online_matrix_calc/simple_server.c
+-'  4  0  ~/netProgram/online_matrix_calc/simple_server.c
+-'  2  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  3  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  47  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  48  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  1  0  ~/netProgram/online_matrix_calc/http_server.h
+-'  38  51  ~/netProgram/online_matrix_calc/http_server.c
+-'  8  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  36  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  46  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  33  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  41  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  44  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  1  0  ~/netProgram/online_matrix_calc/t.c
+-'  6  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  45  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  37  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  34  6  ~/netProgram/online_matrix_calc/http_server.c
+-'  39  50  ~/netProgram/online_matrix_calc/http_server.c
+-'  9  43  ~/netProgram/online_matrix_calc/http_server.h
+-'  79  12  ~/netProgram/online_matrix_calc/simple_server.c
+-'  74  12  ~/netProgram/online_matrix_calc/simple_server.c
+-'  31  26  ~/netProgram/online_matrix_calc/http_server.c
+-'  30  3  ~/netProgram/online_matrix_calc/http_server.c
+-'  1  0  ~/netProgram/online_matrix_calc/http_server.c
+-'  31  0  ~/netProgram/online_matrix_calc/http_server.h
+-'  24  6  ~/netProgram/online_matrix_calc/http_server.h
+-'  21  6  ~/netProgram/online_matrix_calc/http_server.h
+-'  26  3  ~/netProgram/online_matrix_calc/http_server.h
+-'  1  0  ~/netProgram/online_matrix_calc/index.html
+-'  1  0  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  4  1  ~/netProgram/simple_epoll_demo1/makefile
+-'  96  0  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  93  2  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  1  0  ~/netProgram/simple_epoll_demo1/makefile
+-'  78  3  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  58  12  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  67  12  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  94  2  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  89  0  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  98  0  ~/netProgram/simple_epoll_demo1/simple_server.c
+-'  1  0  ~/netProgram/online_matrix_calc/simple_server.c
 -'  6  0  ~/netProgram/simple_epoll_demo_1/makefile
 -'  2  24  ~/netProgram/simple_epoll_demo_1/makefile
 -'  1  0  ~/netProgram/simple_epoll_demo_1/makefile
@@ -218,61 +271,263 @@ $
 -'  127  1  ~/netProgram/simple_server.c
 -'  124  12  ~/netProgram/simple_server.c
 -'  97  12  ~/netProgram/simple_server.c
--'  134  16  ~/netProgram/simple_server.c
--'  3  15  ~/gittest/test.c
--'  2  0  ~/gittest/test.c
--'  4  0  ~/gittest/test.c
--'  1  0  ~/gittest/test.c
--'  66  0  ~/netProgram/simple_server.c
--'  119  5  ~/netProgram/simple_server.c
--'  143  3  ~/netProgram/simple_server.c
--'  145  5  ~/netProgram/simple_server.c
--'  144  16  ~/netProgram/simple_server.c
--'  142  15  ~/netProgram/simple_server.c
--'  133  12  ~/netProgram/simple_server.c
--'  138  12  ~/netProgram/simple_server.c
--'  152  3  ~/netProgram/simple_server.c
--'  93  12  ~/netProgram/simple_server.c
--'  122  13  ~/netProgram/simple_server.c
--'  137  1  ~/netProgram/simple_server.c
--'  112  5  ~/netProgram/simple_server.c
--'  114  32  ~/netProgram/simple_server.c
--'  98  47  ~/netProgram/simple_server.c
--'  91  5  ~/netProgram/simple_server.c
--'  52  3  ~/netProgram/simple_server.c
--'  54  4  ~/netProgram/simple_server.c
--'  113  16  ~/netProgram/simple_server.c
--'  100  8  ~/netProgram/simple_server.c
--'  121  1  ~/netProgram/simple_server.c
--'  120  7  ~/netProgram/simple_server.c
--'  153  0  ~/netProgram/simple_server.c
--'  85  2  ~/netProgram/simple_server.c
--'  154  0  ~/netProgram/simple_server.c
--'  5  1  ~/netProgram/simple_net_demo/makefile
--'  6  2  ~/netProgram/simple_net_demo/server.c
--'  60  0  ~/netProgram/simple_net_demo/common.c
--'  1  0  ~/netProgram/simple_net_demo/common.c
--'  22  13  ~/netProgram/simple_net_demo/common.c
--'  89  5  ~/netProgram/simple_server.c
--'  4  0  ~/netProgram/1.c
--'  1  0  ~/netProgram/1.c
--'  9  0  ~/netProgram/simple_server.c
--'  4  0  ~/netProgram/simple_server.c
--'  78  2  ~/netProgram/simple_server.c
--'  79  2  ~/netProgram/simple_server.c
--'  42  0  ~/netProgram/simple_server.c
--'  72  2  ~/netProgram/simple_server.c
--'  1  0  ~/netProgram/simple_server
--'  1  0  ~/netProgram/simple_server.c
--'  23  0  ~/netProgram/simple_server.c
--'  14  0  ~/netProgram/simple_server.c
--'  1  0  ~/netProgram/simple_select.c
--'  11  2  ~/netProgram/simple_net_demo/server.c
--'  7  0  ~/netProgram/simple_demo/server.c
--'  18  2  ~/netProgram/simple_demo/server.c
--'  123  21  ~/netProgram/simple_server.c
 
 # History of marks within files (newest to oldest):
+
+> ~/netProgram/simple_epoll_demo/simple_server.c
+	"	97	0
+	^	161	78
+	.	161	75
+	+	57	30
+	+	178	0
+	+	177	0
+	+	167	0
+	+	58	0
+	+	167	0
+	+	176	10
+	+	58	0
+	+	175	25
+	+	171	0
+	+	174	0
+	+	173	5
+	+	174	0
+	+	164	0
+	+	162	32
+	+	161	75
+
+> ~/netProgram/online_matrix_calc/index.html
+	"	45	0
+
+> ~/netProgram/online_matrix_calc/simple_server.c
+	"	78	12
+	^	75	55
+	.	75	54
+	+	4	22
+	+	77	4
+	+	75	13
+	+	86	4
+	+	85	13
+	+	76	4
+	+	75	54
+
+> ~/netProgram/online_matrix_calc/simple_server
+	"	1	0
+
+> ~/netProgram/online_matrix_calc/makefile
+	"	4	70
+	^	4	71
+	.	4	70
+	+	3	62
+	+	4	70
+
+> ~/netProgram/online_matrix_calc/http_server.c
+	"	2	0
+	^	1	23
+	.	2	0
+	+	39	14
+	+	41	34
+	+	31	0
+	+	30	18
+	+	49	0
+	+	44	0
+	+	39	24
+	+	45	14
+	+	3	25
+	+	3	0
+	+	3	28
+	+	3	28
+	+	3	0
+	+	3	46
+	+	3	34
+	+	5	11
+	+	3	31
+	+	5	40
+	+	5	40
+	+	3	59
+	+	5	51
+	+	6	11
+	+	5	44
+	+	6	50
+	+	4	17
+	+	5	18
+	+	6	18
+	+	4	47
+	+	6	44
+	+	8	41
+	+	9	0
+	+	31	2
+	+	39	0
+	+	32	1
+	+	45	15
+	+	33	0
+	+	34	18
+	+	33	26
+	+	34	27
+	+	37	21
+	+	39	18
+	+	41	48
+	+	37	37
+	+	34	8
+	+	33	8
+	+	34	14
+	+	37	57
+	+	36	30
+	+	34	18
+	+	33	13
+	+	34	19
+	+	36	52
+	+	41	12
+	+	41	0
+	+	41	24
+	+	41	22
+	+	41	65
+	+	33	0
+	+	34	6
+	+	33	1
+	+	39	4
+	+	39	1
+	+	39	2
+	+	41	0
+	+	38	0
+	+	33	0
+	+	36	0
+	+	37	1
+	+	36	45
+	+	37	0
+	+	33	1
+	+	45	3
+	+	46	1
+	+	33	1
+	+	45	0
+	+	45	0
+	+	45	38
+	+	45	0
+	+	45	0
+	+	45	0
+	+	45	41
+	+	45	26
+	+	3	0
+	+	4	49
+	+	39	0
+	+	33	0
+	+	39	0
+	+	35	24
+	+	45	0
+	+	45	2
+	+	46	0
+	+	35	11
+	+	7	0
+	+	45	0
+	+	44	0
+	+	43	1
+	+	48	1
+	+	1	22
+	+	3	0
+	+	2	0
+
+> ~/netProgram/online_matrix_calc/http_server.h
+	"	10	0
+	^	10	0
+	.	9	45
+	+	1	18
+	+	11	19
+	+	12	21
+	+	13	18
+	+	26	0
+	+	13	38
+	+	26	31
+	+	14	23
+	+	13	42
+	+	14	40
+	+	15	19
+	+	18	2
+	+	16	27
+	+	17	14
+	+	20	6
+	+	19	20
+	+	20	34
+	+	23	2
+	+	20	27
+	+	23	5
+	+	21	0
+	+	23	0
+	+	21	17
+	+	24	30
+	+	25	37
+	+	26	74
+	+	27	2
+	+	26	22
+	+	26	16
+	+	27	27
+	+	30	2
+	+	28	18
+	+	30	0
+	+	31	0
+	+	1	0
+	+	9	44
+	+	7	0
+	+	8	61
+	+	9	45
+	a	28	14
+	i	28	14
+	m	28	14
+
+> ~/netProgram/online_matrix_calc/rio.c
+	"	8	0
+
+> ~/netProgram/online_matrix_calc/t.c
+	"	14	49
+	^	14	50
+	.	14	49
+	+	2	0
+	+	26	0
+	+	12	0
+	+	17	0
+	+	26	0
+	+	26	12
+	+	26	0
+	+	26	0
+	+	26	0
+	+	26	0
+	+	26	0
+	+	19	0
+	+	24	0
+	+	23	0
+	+	24	0
+	+	14	49
+
+> ~/netProgram/simple_epoll_demo/sock_common.c
+	"	28	1
+
+> ~/netProgram/simple_epoll_demo1/simple_server.c
+	"	1	0
+	^	1	21
+	.	1	20
+	+	4	30
+	+	90	31
+	+	98	0
+	+	5	0
+	+	88	0
+	+	87	0
+	+	88	0
+	+	91	0
+	+	93	1
+	+	94	1
+	+	95	26
+	+	97	0
+	+	96	0
+	+	67	45
+	+	1	0
+	+	1	0
+	+	4	0
+	+	1	20
+
+> ~/netProgram/simple_epoll_demo1/makefile
+	"	4	1
+	^	4	57
+	.	4	56
+	+	3	48
+	+	4	56
 
 > ~/netProgram/simple_epoll_demo_1/makefile
 	"	6	0
@@ -495,27 +750,6 @@ $
 > ~/netProgram/rioc
 	"	1	0
 
-> ~/netProgram/simple_epoll_demo/simple_server.c
-	"	100	1
-	^	161	78
-	.	161	75
-	+	57	30
-	+	178	0
-	+	177	0
-	+	167	0
-	+	58	0
-	+	167	0
-	+	176	10
-	+	58	0
-	+	175	25
-	+	171	0
-	+	174	0
-	+	173	5
-	+	174	0
-	+	164	0
-	+	162	32
-	+	161	75
-
 > ~/rio.c
 	"	1	0
 
@@ -547,86 +781,3 @@ $
 	+	1	25
 	+	2	24
 	+	4	3
-
-> ~/netProgram/simple_net_demo/server.c
-	"	1	0
-	^	1	15
-	.	1	14
-	+	11	4
-	+	6	10
-	+	1	14
-
-> ~/netProgram/simple_net_demo/sock_common.h
-	"	1	0
-
-> ~/netProgram/simple_net_demo/sock_common.c
-	"	39	5
-	.	67	0
-	+	1	15
-	+	58	18
-	+	58	2
-	+	58	0
-	+	58	0
-	+	62	0
-	+	67	0
-
-> ~/netProgram/simple_net_demo/makefile
-	"	2	0
-	^	2	33
-	.	2	32
-	+	5	11
-	+	7	4
-	+	5	0
-	+	4	21
-	+	5	18
-	+	7	18
-	+	6	21
-	+	2	28
-	+	2	0
-	+	2	0
-	+	2	0
-	+	2	32
-
-> ~/netProgram/simple_net_demo/client.h
-	"	1	0
-
-> ~/netProgram/simple_net_demo/client.c
-	"	1	14
-	^	1	15
-	.	1	14
-	+	1	14
-
-> ~/netProgram/simple_net_demo/common.c
-	"	5	0
-	.	26	0
-	+	60	0
-	+	26	0
-
-> ~/gittest/test.c
-	"	3	15
-	^	3	16
-	.	3	15
-	+	1	12
-	+	2	6
-	+	2	0
-	+	4	0
-	+	4	0
-	+	2	0
-	+	2	15
-	+	3	15
-
-> ~/netProgram/1.c
-	"	4	0
-	^	4	4
-	.	4	3
-	+	1	18
-	+	2	11
-	+	4	1
-	+	3	0
-	+	4	3
-
-> ~/netProgram/simple_server
-	"	1	0
-
-> ~/netProgram/simple_select.c
-	"	1	0

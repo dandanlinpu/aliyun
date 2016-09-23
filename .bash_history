@@ -1,279 +1,3 @@
-git pull origin master
-cd ..
-ls
-cd ldd
-ls
-vim 1.txt
-git pull origin master
-git add 1.txt
-git commit -m "1再次"
-git status
-git pull origin master
-git status
-vim 1.txt 
-git pull origin master
-ls
-vim 1.txt 
-vim zaver/
-cd zaver/
-ls
-cd ..
-ls
-git status
-vim 1.txt
-vim 2.txt
-git status
-git add 2.txt
-git commit  "2"
-git status
-git add 2.txt
-git commit  -m "2"
-git status
-git pull origin master
-git status
-git push origin master
-ls
-rm 1.txt
-rm 2.txt
-rm mm
-ls
-cd threads_demo/pro_con/
-ls
-vim pro_con_queue2.cpp 
-ls
-cd gdb_learn/
-ks
-ls
-cd ..
-touch test.c
-vim test.c 
-gcc test.c 
-g++ test.c 
-ls
-ps aux
-ls
-cd threads_demo/
-ls
-cd pro_con/
-ls
-vim pro_con_queue
-vim pro_con_queue.cpp 
-vim pro_con_queue2.cpp 
-vim pro_con_vector.cpp 
-vim pro_con_queue2.cpp 
-ls
-g++ niubitest.cpp 
-./a.out 
-nslookup butpot.com
-nslookup doput.com
-nslookup doit.com
-ifconfig
-netstat
-netstat -tunlp
-netstat -tunp
-ls
-cd netProgram/
-ls
-./simple_server 
-vim simple_server.c 
-gcc simple_server.c 
-gcc simple_server.c -o sim
-ls
-./a.out 
-./sim
-vim simple_server
-vim simple_server.c 
-gcc simple_server.c  -o sim
-./sim
-vim simple_server.c 
-./a.out 
-tcpdump -i eth0
-sudo tcpdump -i eth0
-
-tcpdump 
-tcpdump tcp port 1111
-tcpdump -i eth0 tcp port 1111
-sudo tcpdump -i eth0 tcp port 1111
-sudo tcpdump host 127.0.0.1  tcp port 1111
-sudo tcpdump host 127.0.0.1  and tcp port 1111
-sudo tcpdump -i lo  host 127.0.0.1  and tcp port 1111
-sudo tcpdump  host 127.0.0.1
-sudo tcpdump 
-sudo tcpdump  tcp
-ifconfig
-sudo tcpdump -i eth1 tcp
-sudo tcpdump -i eth1 tcp port 1111
-sudo tcpdump  -Xs0 -p tcp and port 1111 -i any
-sudo tcpdump  -Xs0 -p tcp and port 23 -i any
-./sim
-ls
-cd netProgram/
-./a.out 
-./sim
-./simple_server 
-ls
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-./simple_server 
-make
-./simple_server 
-ls
-vim simple_client.c 
-make
-./simple_client 
-vim simple_client.c 
-ls
-ls
-cd netProgram/
-ls
-vim simple_client
-vim simple_client.c
-./a.out 
-vim simple_client.c
-gcc simple_client.c 
-./a.out 
-vim simple_client.c
-gcc simple_client
-:q
-gcc simple_client.c 
-./a.out 
-gcc simple_client.c 
-vim simple_client.c 
-gcc simple_client.c 
-./a.out 
-vim simple_client.c 
-l
-ls
-rm a.out simple_client 
-ls
-gcc simple_client.c 
-ls
-./a.out 
-vim simple_client.c 
-./a.out 
-gcc simple_client.c 
-./a.out 
-s
-ls
-vim makefile 
-make
-ls
-make clean
-vim makefile 
-make clean
-ls
-rm a.out 
-rm sim
-vim makefile 
-ls
-make -f makefile 
-ls
-./simple_client 
-cd netProgram/
-ls
-vim simple_client.c 
-vim test.c
-vim a
-\\\\\\\\n
-nc 127.0.0.1 6666
-111
-vim simple_server.c
-cd netProgram/
-vim simple_server.c
-make
-vim client.c
-ls
-vim server.c
-ls
-vim server.c 
-gcc server.c -o s
-vim client.c 
-gcc client.c -o c
-./s
-vim client.c 
-gcc client.c -o c
-./c
-./c 127.0.0.1 
-nc 127.0.0.1 1111
-nc 127.0.0.1 22
-nc 127.0.0.1 10000
-ls
-cd netProgram/
-ls
-vim makefile 
-nc 127.0.0.1 10000
-sudo reboot
-netstat -tlnp
-netstat -tnlp
-netstat -tlnp
-netstat -tnp
-netstat -t
-netstat -tnp
-netstat -tn
-netstat -tnp
-netstat -tlnp
-./s
-ce netProgram/
-./s
-ls
-cd netProgram/
-./s
-vim server.c 
-gcc server.c -o s
-./s
-\n
-ls
-cd netProgram/
-ls
-vim simple_client
-vim simple_client.c 
-vim simple_server.c 
-ls
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-make
-vim simple_server.c
-./simple_server 
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-make
-./simple_server 
-vim simple_server.c
-vim simple_client.c
-vim simple_server.c
-make
-vim simple_server.c
-make
-./simple_server
-vim simple_server.c
-./simple_server
-vim simple_server.c
-vim client.c 
-gcc client.c -o c
-./c
-rm server.c 
-vim server.c
-ls
-rm client.c 
-ls
-rm c s 
-ls
-vim s.c
-vim c.c
-gcc c.c -o c
-gcc s.c -o s
 ./c
 vim a
 ./s
@@ -998,3 +722,279 @@ nc 127.0.0.1 10000
 nc 127.0.0.1 10000.
 6
 nc 127.0.0.1 10000.
+ls
+cd netProgram/
+ls
+vim rio.c 
+gcc rio.c 
+vim rio.c 
+gcc rio.c 
+gcc -E rio.c 
+ls
+gcc -S rio.c 
+ls
+gcc -c rio.c
+ls
+vim simple_server.c
+vim rio.c
+mkdir simple_epoll_demo
+cp simple_server.c simple_epoll_demo/
+cp makefile simple_epoll_demo/
+cd simple_epoll_demo/
+ls
+vim makefile 
+vim simple_server.c 
+make
+vim makefile 
+make
+./ser
+./simple_server 
+vim simple_server.c
+./ser
+make
+vim simple_server.c
+make
+ls
+./simple_server 
+vim simple_server.c
+make
+cd ..
+ls
+vim simple_server.c
+vim rio.c
+make
+./server 
+rm simple_client simple_server server 
+ls
+rm c
+rm s
+make
+ls
+./simple_server 
+netstat -tunp
+ls
+./simple_server 
+vim rio.c
+./simple_server 
+netstat
+netstat -tun
+./simple_server 
+vim rio.c
+make
+./simple_server 
+vim rio.c
+make
+./simple_server 
+vim rio.c
+make
+./simple_server 
+877777777+
+45555555
+vim rio.c
+make
+./simple_server 
+ls
+vim simple_server.c
+vim rio.c
+make
+./simple_server 
+ls
+vim rio.c rio.h
+cd simple_epoll_demo/
+ls
+cd ..
+./simple_server 
+vim rioc
+:q
+vim rio.c
+./simple_server 
+vim rio.c
+tcpdump -i any -nn tcp port 10000
+sudo tcpdump -i any -nn tcp port 10000
+cd ..
+ls
+cd netProgram/
+;s
+ls
+mv simple_epoll_demo_1/ simple_epoll_demo1
+ls
+git commit -a -m "simple_epoll_demo1"
+git status
+git add simple_epoll_demo1/ 
+git commit -m "epoll_demo1"
+git status 
+rm rio.o
+git status
+git push origin master
+ls
+nc 127.0.0.1 10000
+cd netProgram/
+ls
+vim simple_server.c
+vim rio.h
+gcc -c rio.c
+g++ -c rio.c
+vim simple_server.c
+vim rio.c
+vim makefile 
+make
+./simple_server 
+vim rio.c
+./simple_server 
+cd simple_epoll_demo/
+ls
+./simple_server 
+./simple_server .
+netstat -tun
+./simple_server 
+cd ..
+vim rio.c
+vim simple_server.c
+make
+cd ..
+git branch 
+git remote -v
+git push origin master
+git status
+git commit -a "add rio_c"
+git commit -a -m "add rio_c"
+git status
+git add netProgram/rio.c netProgram/rio.h netProgram/rio.s netProgram/simple_epoll_demo/
+git commit -m "rio"
+git status
+git push origin master
+make
+ls
+cd netProgram/
+./simple_server 
+git status
+tcpdump -i any tcp port 10000
+sudo tcpdump -i any tcp port 10000
+nc 127.0.0.1 1000
+netstat -tunp
+nc 127.0.0.1 1000
+nc 127.0.0.1 10000
+mkdir online_matrix_calc
+cp simple_epoll_demo1/* online_matrix_calc/
+cd online_matrix_calc/
+;s
+ls
+vim simple_server.c
+cd ..
+ls
+cd simple_epoll_demo1
+ls
+vim simple_server.c 
+make
+./simple_server 
+make
+./simple_server 
+./simple_server .
+./simple_server 
+cd netProgram/simple_epoll_demo/
+l;s
+vim simple_server.c 
+./simple_server 
+cd ..
+
+./simple_server 
+vim rio.c
+./simple_server 
+make
+./simple_server 
+make
+vim simple_server.c
+vim rio.c
+make
+./simple_server 
+vim simple_server.c
+make
+./simple_server 
+vim simple_server.c
+make
+./simple_server.c
+./simple_server
+ls
+mkdir simple_epoll_demo_1
+cp simple_server.c rio.h rio.c simple_epoll_demo_1/
+cd simple_epoll_demo_1
+ls
+cp ../makefile .
+ls
+vim makefile 
+make
+vim makefile 
+make
+ls
+./simple_server 
+nc 127.0.0.1 10000
+ls
+vim simple_server.c
+make
+./simple_server 
+ls
+vim simple_server.c
+cd ..
+l;s
+ls
+cp simple_net_demo/sock_common.* simple_epoll_demo1
+cd simple_epoll_demo1
+ls
+vim simple_server.c
+vim makefile 
+make
+vim makefile 
+vim simple_server.c
+vim makefile 
+make
+ls
+./simple_server 
+vim simple_server.c 
+make
+./simple_server 
+ccls
+ls
+cd ..
+ls
+cd simple_epoll_demo
+ls
+cd ..
+cd  simple_epoll_demo
+ls
+rm *
+ls
+cd ..
+cp simple_epoll_demo1/* simple_epoll_demo
+ls
+cd simple_epoll_demo
+ls
+./simple_server 
+cd ..
+cd simple_epoll_demo1
+ls
+cd ..
+ls
+cp simple_epoll_demo1/* online_matrix_calc/
+cd online_matrix_calc/
+ls
+touch sz
+rz
+ls
+rm sz
+ls
+vim index.html 
+touch http_server.c
+touch http_server.h
+vim http_server.c
+vim http_server.h
+ls
+cd netProgram/
+ls
+cd simple_epoll_demo
+ls
+vim sock_common.c
+man mmap
+man open
+man mmap
+man opn
+man open

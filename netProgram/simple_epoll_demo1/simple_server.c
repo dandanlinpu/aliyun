@@ -1,73 +1,7 @@
-#include  <unistd.h>
-#include  <sys/types.h>       /* basic system data types */
-#include  <sys/socket.h>      /* basic socket definitions */
-#include  <sys/epoll.h>
-#include  <netinet/in.h>      /* sockaddr_in{} and other Internet defns */
-#include  <arpa/inet.h>       /* inet(3) functions */
-
-#include  <fcntl.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <stdio.h>
-#include <string.h>
-
+#include <sys/epoll.h>
+#include "sock_common.h"
 #include "rio.h"
-int open_listenfd(int port){
-  int listenfd;
-  //socket 
-  listenfd=socket(AF_INET,SOCK_STREAM,0);
-  struct sockaddr_in servaddr;
-  bzero(&servaddr,sizeof(servaddr));
-  servaddr.sin_family=AF_INET;
-  servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
-  servaddr.sin_port=htons(port);
-  //bind
-  if(bind(listenfd,(struct sockaddr *) &servaddr,sizeof(servaddr))==-1){
-     perror("bind error");
-     exit(-1);
-  };
-  //listen
-  if(listen(listenfd,30)==-1){
-     perror("listen error");
-     exit(-1);
-  };
-  printf("open listenfd %d\n",listenfd);
-  return listenfd;
-}
-void print_sockinfo(struct sockaddr_in *client_addr){
-   if(client_addr==NULL) return;
-   char addrstr[INET_ADDRSTRLEN]; //16
-   int port;
-
-   inet_ntop(AF_INET,&(client_addr->sin_addr),addrstr,sizeof(addrstr));
-   port=ntohs(client_addr->sin_port);
-   printf("remote ip:%s port:%d\n",addrstr,port);
-}
-void set_fd_noblock(int fd){
-   int cflags=fcntl(fd,F_GETFL,0);
-   if(cflags==-1){
-   	perror("fcntl_1 error");
-	exit(-1);
-   }
-   cflags=cflags|O_NONBLOCK;
-   if(fcntl(fd,F_SETFL,cflags)){
-   	perror("fcntl_2 error");
-	exit(-1);
-   };
-}
-void epoll_process(){
-
-
-
-}
-int main(){
-  printf("epoll test main..\n");
-  int listenfd,connfd;
-
-  //socket bind listen
-  listenfd=open_listenfd(10000);
-  set_fd_noblock(listenfd);
- 
+void epoll_process(int listenfd){
   //epoll_create 
   int epfd=epoll_create1(0);
   if(epfd==-1){
@@ -130,6 +64,7 @@ int main(){
             struct epoll_event ev;
             ev.data.fd=events[i].data.fd;
             ev.events=EPOLLOUT|EPOLLET;
+            printf("change fd %d to EPOLLOUT\n",events[i].data.fd);
             if(epoll_ctl(epfd,EPOLL_CTL_MOD,events[i].data.fd,&ev)==-1){
                 perror("epoll_ctl mod  error");
      		exit(-1);
@@ -149,6 +84,14 @@ int main(){
  	}
    
      }//for 
- }  //while
+  }  //while
+}
+int main(){
+  printf("epoll test main..\n");
+  
+  //socket bind listen
+  int  listenfd=open_listenfd(10000);
+  set_fd_noblock(listenfd);
+  epoll_process(listenfd);
   return 0;
 }

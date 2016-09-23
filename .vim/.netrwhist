@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/ldd/unpv13e/test'
+let g:netrw_dirhist_2='/home/ldd/unpv13e/mysdr'
+let g:netrw_dirhist_3='/home/ldd/gdb_learn'
+let g:netrw_dirhist_4='/home/ldd/httpsrv'
+let g:netrw_dirhist_5='/home/ldd/zaver/html'
+let g:netrw_dirhist_6='/home/ldd/zaver'
+let g:netrw_dirhist_7='/home/ldd/netProgram/simple_net_demo'

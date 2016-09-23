@@ -1,0 +1,75 @@
+Downloading/unpacking termcolor
+  Getting page https://pypi.python.org/simple/termcolor/
+  URLs to search for versions for termcolor:
+  * https://pypi.python.org/simple/termcolor/
+  Analyzing links from page https://pypi.python.org/simple/termcolor/
+    Found link https://pypi.python.org/packages/12/01/113e742e7f886dfab6de8e99c6f5d602da3b5c6a239eff9650b81ce0b329/termcolor-0.1.2.tar.gz#md5=bc0f9923c8c82643a6b48e1b0f87399f (from https://pypi.python.org/simple/termcolor/), version: 0.1.2
+    Found link https://pypi.python.org/packages/37/1c/d55807c718e66c15caf9f20537ff970cbe09748c09e874c073d1f44fad75/termcolor-1.0.0.tar.gz#md5=516471dc99f96fe5b7a6e7ca5485807e (from https://pypi.python.org/simple/termcolor/), version: 1.0.0
+    Found link https://pypi.python.org/packages/42/c3/b5c220d9a27d0a7ae741e82d9af68f88210a6623596f9e9b9cdaa708e0c5/termcolor-1.0.1.tar.gz#md5=c4120f4b2520bb7ee06d073b37bb76b7 (from https://pypi.python.org/simple/termcolor/), version: 1.0.1
+    Found link https://pypi.python.org/packages/5c/6c/68a4216e01a07c2c8a55ec13b0eba14a697781cf328fbd35651d4cb2e7b0/termcolor-0.2.tar.gz#md5=b1c9dd2ce09f486f679401b1539993ca (from https://pypi.python.org/simple/termcolor/), version: 0.2
+    Found link https://pypi.python.org/packages/77/5d/dc58e40a11d6b802e3da789fe8217590d477e7bb77eb376a853b0550c6cb/termcolor-0.1.1.tar.gz#md5=ae029184da6b475adac647c0bdfc8065 (from https://pypi.python.org/simple/termcolor/), version: 0.1.1
+    Found link https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz#md5=043e89644f8909d462fbbfa511c768df (from https://pypi.python.org/simple/termcolor/), version: 1.1.0
+    Found link https://pypi.python.org/packages/f4/a8/7a468be0aea5d576aa9b4840426a9fa3c67cb31eb59c1d5a5ab83ba90305/termcolor-0.1.tar.gz#md5=e4f6f5da0cd7a59a89ce7ecd5f6aba92 (from https://pypi.python.org/simple/termcolor/), version: 0.1
+  Using version 1.1.0 (newest of versions: 1.1.0, 1.0.1, 1.0.0, 0.2, 0.1.2, 0.1.1, 0.1)
+  Downloading termcolor-1.1.0.tar.gz
+  Downloading from URL https://pypi.python.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz#md5=043e89644f8909d462fbbfa511c768df (from https://pypi.python.org/simple/termcolor/)
+  Running setup.py (path:/tmp/pip_build_ldd/termcolor/setup.py) egg_info for package termcolor
+    running egg_info
+    creating pip-egg-info/termcolor.egg-info
+    writing pip-egg-info/termcolor.egg-info/PKG-INFO
+    writing top-level names to pip-egg-info/termcolor.egg-info/top_level.txt
+    writing dependency_links to pip-egg-info/termcolor.egg-info/dependency_links.txt
+    writing manifest file 'pip-egg-info/termcolor.egg-info/SOURCES.txt'
+    warning: manifest_maker: standard file '-c' not found
+    
+    reading manifest file 'pip-egg-info/termcolor.egg-info/SOURCES.txt'
+    writing manifest file 'pip-egg-info/termcolor.egg-info/SOURCES.txt'
+  Source in /tmp/pip_build_ldd/termcolor has version 1.1.0, which satisfies requirement termcolor
+Installing collected packages: termcolor
+  Running setup.py install for termcolor
+    Running command /bin/python -c "import setuptools, tokenize;__file__='/tmp/pip_build_ldd/termcolor/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-OaICvW-record/install-record.txt --single-version-externally-managed --compile
+    running install
+    running build
+    running build_py
+    creating build
+    creating build/lib
+    copying termcolor.py -> build/lib
+    running install_lib
+    copying build/lib/termcolor.py -> /usr/lib/python2.7/site-packages
+    error: /usr/lib/python2.7/site-packages/termcolor.py: Permission denied
+    Complete output from command /bin/python -c "import setuptools, tokenize;__file__='/tmp/pip_build_ldd/termcolor/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-OaICvW-record/install-record.txt --single-version-externally-managed --compile:
+    running install
+
+running build
+
+running build_py
+
+creating build
+
+creating build/lib
+
+copying termcolor.py -> build/lib
+
+running install_lib
+
+copying build/lib/termcolor.py -> /usr/lib/python2.7/site-packages
+
+error: /usr/lib/python2.7/site-packages/termcolor.py: Permission denied
+
+----------------------------------------
+Cleaning up...
+  Removing temporary dir /tmp/pip_build_ldd...
+Command /bin/python -c "import setuptools, tokenize;__file__='/tmp/pip_build_ldd/termcolor/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-OaICvW-record/install-record.txt --single-version-externally-managed --compile failed with error code 1 in /tmp/pip_build_ldd/termcolor
+Exception information:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/pip-1.5.5-py2.7.egg/pip/basecommand.py", line 122, in main
+    status = self.run(options, args)
+  File "/usr/lib/python2.7/site-packages/pip-1.5.5-py2.7.egg/pip/commands/install.py", line 283, in run
+    requirement_set.install(install_options, global_options, root=options.root_path)
+  File "/usr/lib/python2.7/site-packages/pip-1.5.5-py2.7.egg/pip/req.py", line 1435, in install
+    requirement.install(install_options, global_options, *args, **kwargs)
+  File "/usr/lib/python2.7/site-packages/pip-1.5.5-py2.7.egg/pip/req.py", line 706, in install
+    cwd=self.source_dir, filter_stdout=self._filter_install, show_stdout=False)
+  File "/usr/lib/python2.7/site-packages/pip-1.5.5-py2.7.egg/pip/util.py", line 697, in call_subprocess
+    % (command_desc, proc.returncode, cwd))
+InstallationError: Command /bin/python -c "import setuptools, tokenize;__file__='/tmp/pip_build_ldd/termcolor/setup.py';exec(compile(getattr(tokenize, 'open', open)(__file__).read().replace('\r\n', '\n'), __file__, 'exec'))" install --record /tmp/pip-OaICvW-record/install-record.txt --single-version-externally-managed --compile failed with error code 1 in /tmp/pip_build_ldd/termcolor

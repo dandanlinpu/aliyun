@@ -2,6 +2,16 @@
 #include "sock_common.h"
 #include "rio.h"
 #include "http_server.h"
+#include <map>
+#include <string>
+using namespace std;
+class client_info{
+   public:
+      map<int,string> fd_fname;
+
+};
+char request_file_name[20];
+
 void epoll_process(int listenfd){
   //epoll_create 
   int epfd=epoll_create1(0);
@@ -54,14 +64,34 @@ void epoll_process(int listenfd){
 	    }
 	    
 	}else if(events[i].events & EPOLLIN){
-            printf("process EPOLLIN, fd:%d \n",events[i].data.fd);
-	    int  bufsize=8192;
+            printf("\nEPOLLIN, fd:%d \n",events[i].data.fd);
+	    int  bufsize=88192;
             char r_buf[bufsize];
             memset(r_buf,0,bufsize);
-            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize); //client直接在nc上输入ctrl+d 服务器收到FIN：w
-            printf("read %d bytes data:%s \n",n_read,r_buf);
+            int n_read=rio_readn(events[i].data.fd,r_buf,bufsize); //client在nc上输入ctrl+d 服务器收到FIN
+            printf("EPOLLIN read %d bytes data\n",n_read);
             
-	    //epoll_ctl MOD:when receive data,use this fd to write data.
+	    //process_http_request(r_buf,bufsize); 
+	    //获取get后的uri
+	    char delim[]=" ";
+	    char *token=strtok(r_buf,delim);
+            if(token!=NULL){
+	        token=strtok(NULL,delim);
+	    }
+ 	    printf("token : %s\n",token);
+	    if(strcmp(token,"/")==0){
+	    	strcpy(request_file_name,"index.html");
+            }else if(strcmp(token,"/bootstrap.min.js")==0){
+	    	strcpy(request_file_name,"bootstrap.min.js");
+	    }else if(strcmp(token,"/jquery.min.js")==0){
+ 		strcpy(request_file_name,"jquery.min.js");
+	    }else if(strcmp(token,"/bootstrap.min.css")==0){
+ 		strcpy(request_file_name,"bootstrap.min.css");
+	    }else{
+ 		strcpy(request_file_name,"none");
+	    }
+            printf("request_file_name: %s\n",request_file_name);
+  	    //epoll_ctl MOD:when receive data,use this fd to write data.
             struct epoll_event ev;
             ev.data.fd=events[i].data.fd;
             ev.events=EPOLLOUT|EPOLLET;
@@ -71,8 +101,11 @@ void epoll_process(int listenfd){
      		exit(-1);
 	    }; 
 	}else if(events[i].events & EPOLLOUT){
-            printf("process EPOLLOUT, fd:%d\n",events[i].data.fd);
-            show_index(events[i].data.fd,"index.html");
+            printf("\n EPOLLOUT, fd:%d\n",events[i].data.fd);
+            if(strcmp(request_file_name,"none")!=0){
+                show_index(events[i].data.fd,request_file_name);
+	    }
+
 	    /*
 	    int bufsize=120;
             char w_buf[bufsize];

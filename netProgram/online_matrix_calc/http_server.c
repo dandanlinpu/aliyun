@@ -1,10 +1,18 @@
 #include "http_server.h"
-void form_response_header(char *buf,int maxline,int filesize){
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+void form_response_header(int fd,int content_len,char *content_type){
+   int maxline=1024;
+   char buf[maxline];
+   memset(buf,0,maxline);
    sprintf(buf,"HTTP/1.1 200 OK\n");
    sprintf(buf,"%sServer: EPOLL_HTTP_SERVER\n",buf);
-   sprintf(buf,"%sContent-Length: %d\n",buf,filesize);
-   sprintf(buf,"%sContent-Type: text/html\n\n",buf);
+   sprintf(buf,"%sContent-Length: %d\n",buf,content_len);
+   sprintf(buf,"%sContent-Type: %s\n\n",buf,content_type);
    printf("form_response_header: %s",buf);
+   int n_write_header=rio_writen(fd,buf,strlen(buf));
+   printf("n_write_header %d bytes data\n",n_write_header);
 }
 
 void show_index(int fd,const char *filename){
@@ -30,19 +38,42 @@ void show_index(int fd,const char *filename){
    printf("mem_ptr %p \n",mem_ptr);
   
    //rio写入socket
-   int maxline=1024;
-   char h_buf[maxline];
-   memset(h_buf,0,maxline);
-   form_response_header(h_buf,maxline,filesize);
-   int n_write_header=rio_writen(fd,h_buf,strlen(h_buf));
-   printf("n_write_header %d bytes data:%s\n",n_write_header,h_buf);
-
+   char content_type[100];
+   memset(content_type,0,sizeof(content_type));
+   if(strcmp(filename,"index.html")==0){
+	strcpy(content_type,"text/html");
+   }else if(strcmp(filename,"bootstrap.min.js")==0){
+	strcpy(content_type,"application/javascript");
+   }else if(strcmp(filename,"jquery.min.js")==0){
+	strcpy(content_type,"application/javascript");
+   }else if(strcmp(filename,"bootstrap.min.css")==0){
+	strcpy(content_type,"text/css");
+   }
+   printf("content_type %s\n",content_type);
+	
+   form_response_header(fd,filesize,content_type);
    int n_write_body=rio_writen(fd,mem_ptr,filesize);
-   printf("n_write_body %d bytes data:%s\n",n_write_body,mem_ptr);
+   
+   printf("n_write_body %d bytes data\n",n_write_body);
+}
+void process_http_request(char *buf, int len){
+   printf("process_http_request: %s\n",buf);
+   char delim[]=" ";
+   char *token=strtok(buf,delim);
+   token=strtok(NULL,delim);
+   printf("get uri:%s\n",token);
+
+}
+void get_reponse(){
+
 }
 /*
 int main(){
-   show_index(1,"index.html");
+   char file_str[20]=".";
+   strcat(file_str,"/index.html");
+   printf("file_str : %s \n",file_str);   
+   show_index(1,file_str);
+   //process_http_request(NULL,1); 
    return 0;
 }
 */

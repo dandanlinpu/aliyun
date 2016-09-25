@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>online matrix calc</title>
 	<link rel="stylesheet" href="bootstrap.min.css">
-	<script src="jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 	<script src="bootstrap.min.js"></script>
 
 </head>
@@ -43,3 +43,28 @@
 	</div>
 </body>
 </html>
+
+
+<script>
+        var matrix1=[[1,2,3],[4,5,6]];
+	(function($){
+		$("#calc").click(function(){
+			$.ajax({
+				url:"calc",
+				type:"get",
+				async:false,
+				data:{
+					matrix1:matrix1,
+					matrix2:$("#m2").val().trim(),
+					operation:"multiply"
+				},
+				success:function(data,status){
+					console.log(data);
+				}
+			})
+			
+	
+		})
+	
+	})(jQuery)
+</script>

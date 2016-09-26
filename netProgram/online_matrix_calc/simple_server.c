@@ -10,6 +10,7 @@ class client_info{
       map<int,string> fd_fname;
 
 };
+char request_url[200];
 char request_file_name[20];
 
 void epoll_process(int listenfd){
@@ -89,6 +90,8 @@ void epoll_process(int listenfd){
  		strcpy(request_file_name,"bootstrap.min.css");
 	    }else{
  		strcpy(request_file_name,"none");
+  		strcpy(request_url,token);
+            	printf("request_url: %s request_file_name: %s\n",request_url,request_file_name);
 	    }
             printf("request_file_name: %s\n",request_file_name);
   	    //epoll_ctl MOD:when receive data,use this fd to write data.
@@ -104,7 +107,9 @@ void epoll_process(int listenfd){
             printf("\n EPOLLOUT, fd:%d\n",events[i].data.fd);
             if(strcmp(request_file_name,"none")!=0){
                 show_index(events[i].data.fd,request_file_name);
-	    }
+	    }else{
+	        calc(events[i].data.fd,request_url);
+            }
 
 	    /*
 	    int bufsize=120;

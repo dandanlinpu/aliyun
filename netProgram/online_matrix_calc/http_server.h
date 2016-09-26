@@ -8,3 +8,4 @@
 void form_response_header(char *buf,int maxline,int filesize);
 void show_index(int fd,const char *filename);
 void process_http_request(char *buf, int len);
+void calc(int fd,char *);

@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "url_encode.h"
+#include "multi_matrix.h"
 void form_response_header(int fd,int content_len,char *content_type){
    int maxline=1024;
    char buf[maxline];
@@ -119,13 +120,7 @@ void calc(int fd,char url[]){
   vector<vector<int> >matrix1_num_v =  matrix_str_process(matrix1);
   vector<vector<int> >matrix2_num_v =  matrix_str_process(matrix2);
   //矩阵运算
-  cout<<"matrix calc"<<endl;
-  vector<vector<int> >matrix_result(3,vector<int>(3,0));
-  for(int i=0;i<matrix_result.size();i++){
-     for(int j=0;j<matrix_result[0].size();j++){
-        matrix_result[i][j]=i+j;
-     }
-  }
+  vector<vector<int> >matrix_result=multi_matrix(matrix1_num_v,matrix2_num_v);
   //结果矩阵字符串化
   char res_buf[100];
   memset(res_buf,0,sizeof(res_buf));

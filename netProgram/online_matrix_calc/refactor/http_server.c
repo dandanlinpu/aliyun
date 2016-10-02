@@ -38,7 +38,6 @@ void show_index(int fd,const char *filename){
       perror("stat error");
       exit(-1);
    }
-
    int filesize=fstat.st_size;
    printf("filesize: %d \n",filesize);
    //内存映射文件
@@ -90,6 +89,7 @@ vector< vector<int> > matrix_str_process(char *matrix){
         matrix_v.push_back(string(token));
         token=strtok(NULL,delim);
    }
+
    result.resize(matrix_v.size());
    for(int i=0;i<matrix_v.size();i++){
       char s[30];
@@ -100,6 +100,7 @@ vector< vector<int> > matrix_str_process(char *matrix){
       	_token=strtok(NULL," ");
       }
    }
+
    for(int i=0;i<result.size();i++){
      for(int j=0;j<result[i].size();j++){
    	cout<<"result:"<<result[i][j]<<" ";

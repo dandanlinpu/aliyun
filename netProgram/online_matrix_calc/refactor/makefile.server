@@ -1,0 +1,5 @@
+alltarget:r_server
+r_server:server.cpp socket.cpp event.cpp rio.c
+	g++ -std=c++11  -o r_server server.cpp socket.cpp event.cpp rio.c tool.cpp
+clean:
+	rm r_server

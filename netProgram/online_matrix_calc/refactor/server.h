@@ -16,4 +16,7 @@ private:
 	//void _write(int fd,int buf,int size);
 	void _write(int fd);
 	
+	char request_file_name[20];
+	char request_url[200];
+	
 };

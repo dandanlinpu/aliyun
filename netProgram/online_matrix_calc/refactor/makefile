@@ -1,6 +1,5 @@
-#nc 127.0.0.1 port  
-alltarget: simple_server 
-simple_server:simple_server.c rio.c sock_common.c http_server.c url_encode.c multi_matrix.c
-	g++ -std=c++11 -o simple_server simple_server.c rio.c sock_common.c http_server.c url_encode.c multi_matrix.c
+alltarget:r_server
+r_server:server.cpp socket.cpp event.cpp rio.c http_helper.cpp multi_matrix.c url_encode.c
+	g++ -std=c++11  -o r_server server.cpp socket.cpp event.cpp rio.c tool.cpp http_helper.cpp multi_matrix.c url_encode.c
 clean:
-	rm  simple_server 	
+	rm r_server
